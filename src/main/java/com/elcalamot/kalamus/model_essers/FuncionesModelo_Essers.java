@@ -15,9 +15,14 @@ import com.elcalamot.kalamus.model_planetas.FuncionesModelo_Planetas;
 import com.elcalamot.kalamus.model_planetas.PlanetaExceptions;
 import com.elcalamot.kalamus.model_planetas.Planeta;
 import com.elcalamot.kalamus.model_planetas.Sistemas;
+import com.elcalamot.kalamus.persistencia.Persistencia.PersistenciaDB;
 import com.elcalamot.kalamus.persistencia.Persistencia.PersistenciaFicheros;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Properties;
 
 /**
  *
@@ -25,12 +30,16 @@ import java.util.ArrayList;
  */
 public class FuncionesModelo_Essers {
 
-    public static void crearEsser(String[] args) throws IOException {
+    public static void crearEsser(String[] args, PersistenciaDB persistenciadb) throws IOException {
+
+        Properties eleccion = new Properties();
+        eleccion.load(new FileInputStream(new File(System.getProperty("user.home") + "/.kalamus/kalamus.prop")));
+        eleccion.getProperty(("eleccio").toLowerCase());
+
         try {
             Sistemas sis = Sistemas.getInstance();
             Planeta planeta = sis.comprobarPlaneta(args[4].toLowerCase());
-            
-            
+
             switch (args[3].toLowerCase()) {
 
                 case "huma":
@@ -40,7 +49,13 @@ public class FuncionesModelo_Essers {
                     Humans huma = new Humans(args[2], "huma", Integer.parseInt(args[5]), args[6]);
                     FuncionesModelo_Planetas.poblacionPlaneta(planeta.getNomplan());
                     planeta.addEsser(huma);
-                    PersistenciaFicheros.anadirEsser(huma, planeta);
+
+                    if (eleccion.getProperty("eleccio").equalsIgnoreCase("postgres")) {
+                        persistenciadb.insertEssers(huma, args[4].toLowerCase());
+                    } else if (eleccion.getProperty("eleccio").equalsIgnoreCase("fichero")) {
+                        PersistenciaFicheros.anadirEsser(huma, planeta);
+                    }
+
                     System.out.println("Añadido correctamente.");
 
                     break;
@@ -51,7 +66,13 @@ public class FuncionesModelo_Essers {
                     reglasVA(andor, planeta);
                     FuncionesModelo_Planetas.poblacionPlaneta(planeta.getNomplan());
                     planeta.addEsser(andor);
-                    PersistenciaFicheros.anadirEsser(andor, planeta);
+
+                    if (eleccion.getProperty("eleccio").equalsIgnoreCase("postgres")) {
+                        persistenciadb.insertEssers(andor, args[4].toLowerCase());
+                    } else if (eleccion.getProperty("eleccio").equalsIgnoreCase("fichero")) {
+                        PersistenciaFicheros.anadirEsser(andor, planeta);
+                    }
+
                     System.out.println("Añadido correctamente.");
 
                     break;
@@ -63,7 +84,13 @@ public class FuncionesModelo_Essers {
                     Ferengi fer = new Ferengi(args[2], "ferengi", Double.parseDouble(args[5]));
                     FuncionesModelo_Planetas.poblacionPlaneta(planeta.getNomplan());
                     planeta.addEsser(fer);
-                    PersistenciaFicheros.anadirEsser(fer, planeta);
+
+                    if (eleccion.getProperty("eleccio").equalsIgnoreCase("postgres")) {
+                        persistenciadb.insertEssers(fer, args[4].toLowerCase());
+                    } else if (eleccion.getProperty("eleccio").equalsIgnoreCase("fichero")) {
+                        PersistenciaFicheros.anadirEsser(fer, planeta);
+                    }
+
                     System.out.println("Añadido correctamente.");
 
                     break;
@@ -75,7 +102,13 @@ public class FuncionesModelo_Essers {
                     reglasVA(vulc, planeta);
                     FuncionesModelo_Planetas.poblacionPlaneta(planeta.getNomplan());
                     planeta.addEsser(vulc);
-                    PersistenciaFicheros.anadirEsser(vulc, planeta);
+
+                    if (eleccion.getProperty("eleccio").equalsIgnoreCase("postgres")) {
+                        persistenciadb.insertEssers(vulc, args[4].toLowerCase());
+                    } else if (eleccion.getProperty("eleccio").equalsIgnoreCase("fichero")) {
+                        PersistenciaFicheros.anadirEsser(vulc, planeta);
+                    }
+
                     System.out.println("Añadido correctamente.");
 
                     break;
@@ -86,9 +119,14 @@ public class FuncionesModelo_Essers {
                     reglasNibirians(nib, planeta);
                     FuncionesModelo_Planetas.poblacionPlaneta(planeta.getNomplan());
                     planeta.addEsser(nib);
-                    PersistenciaFicheros.anadirEsser(nib, planeta);
+
+                    if (eleccion.getProperty("eleccio").equalsIgnoreCase("postgres")) {
+                        persistenciadb.insertEssers(nib, args[4].toLowerCase());
+                    } else if (eleccion.getProperty("eleccio").equalsIgnoreCase("fichero")) {
+                        PersistenciaFicheros.anadirEsser(nib, planeta);
+                    }
+
                     System.out.println("Añadido correctamente.");
-                    
 
                     break;
 
@@ -100,14 +138,20 @@ public class FuncionesModelo_Essers {
                     Klingon kling = new Klingon(args[2], "klingon", Integer.parseInt(args[5]));
                     FuncionesModelo_Planetas.poblacionPlaneta(planeta.getNomplan());
                     planeta.addEsser(kling);
-                    PersistenciaFicheros.anadirEsser(kling, planeta);
+
+                    if (eleccion.getProperty("eleccio").equalsIgnoreCase("postgres")) {
+                        persistenciadb.insertEssers(kling, args[4].toLowerCase());
+                    } else if (eleccion.getProperty("eleccio").equalsIgnoreCase("fichero")) {
+                        PersistenciaFicheros.anadirEsser(kling, planeta);
+                    }
+
                     System.out.println("Añadido correctamente.");
 
                     break;
 
             }
 
-        } catch (NullPointerException | DatosExceptions | EssersExceptions | EnumsExceptions | PlanetaExceptions exception) {
+        } catch (NullPointerException | DatosExceptions | EssersExceptions | EnumsExceptions | PlanetaExceptions | SQLException exception) {
             System.out.println(exception.getMessage());
         }
     }
@@ -194,7 +238,7 @@ public class FuncionesModelo_Essers {
         if (nib.isFlora().equalsIgnoreCase("yes")) {
             if (destino.getFlora_vermella().equalsIgnoreCase("No")) {
                 throw new EssersExceptions(4);
-                
+
             }
         }
 

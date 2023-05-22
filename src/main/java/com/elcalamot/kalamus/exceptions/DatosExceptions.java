@@ -20,6 +20,7 @@ public class DatosExceptions extends Exception {
     public static final int GENERE_HUMA = 5;
     public static final int ARGS = 6;
     public static final int POBLACIO = 7;
+    public static final int ELECCION = 8;
  
 
     
@@ -31,7 +32,8 @@ public class DatosExceptions extends Exception {
             "ERROR: La especie en caso de que coma flora o peces se tiene que indicar con: yes/no.",
             "ERROR: El genero tiene que ser masculi/femeni.",
             "ERROR: Numero de argumentos incorrecto. Compruebe su comando.",
-            "ERROR: Poblacion del planeta tiene que ser mayor a 0.");
+            "ERROR: Poblacion del planeta tiene que ser mayor a 0.",
+            "ERROR: El properties tiene que ser postgres/fichero.");
     
     private final int code;
 

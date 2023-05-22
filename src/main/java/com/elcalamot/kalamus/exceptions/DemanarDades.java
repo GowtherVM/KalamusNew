@@ -97,11 +97,12 @@ public class DemanarDades {
 
     public static void demanarEnter(int enter, int minim) throws DatosExceptions {
         
-            if (enter >= minim) {
+            if (enter <= minim) {
                 throw new DatosExceptions(3);
             }
         
     }
+    
 
     public static boolean demanarBoolean(String missatge, String opcioTrue, String opcioFalse) throws IOException {
         BufferedReader entrada = new BufferedReader(new InputStreamReader(System.in));

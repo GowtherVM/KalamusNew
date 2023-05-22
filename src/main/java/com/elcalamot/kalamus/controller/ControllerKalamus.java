@@ -4,6 +4,7 @@
  */
 package com.elcalamot.kalamus.controller;
 
+import com.elcalamot.kalamus.enums.EnumsExceptions;
 import com.elcalamot.kalamus.exceptions.DatosExceptions;
 import com.elcalamot.kalamus.exceptions.DemanarDades;
 import com.elcalamot.kalamus.model_essers.Andorians;
@@ -18,10 +19,15 @@ import com.elcalamot.kalamus.model_planetas.FuncionesModelo_Planetas;
 import com.elcalamot.kalamus.model_planetas.Planeta;
 
 import com.elcalamot.kalamus.model_planetas.Sistemas;
+import com.elcalamot.kalamus.persistencia.Persistencia.PersistenciaDB;
 import com.elcalamot.kalamus.persistencia.Persistencia.PersistenciaFicheros;
 import com.elcalamot.kalamus.vistas.Vistas;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Properties;
+import java.io.FileInputStream;
+import java.sql.SQLException;
 
 /**
  *
@@ -31,6 +37,7 @@ public class ControllerKalamus {
 
     private Sistemas sistemas;
     private PersistenciaFicheros persistencia;
+    private PersistenciaDB persdb = new PersistenciaDB();
 
 
     public ControllerKalamus(Sistemas sistemas, PersistenciaFicheros persistencia) {
@@ -39,10 +46,33 @@ public class ControllerKalamus {
 
     }
 
-    public void iniciarKalamus(String[] args) throws IOException, DatosExceptions {
-
+    public void iniciarKalamus(String[] args) throws IOException, DatosExceptions, SQLException {
+        
+        
+        
+        Properties eleccion = new Properties();
+        eleccion.load(new FileInputStream(new File(System.getProperty("user.home")+"/.kalamus/kalamus.prop")));
+        eleccion.getProperty(("eleccio").toLowerCase());
+        
         //FuncionesModelo_Planetas.testsPlanetas();
         //FuncionesModelo_Essers.testEssers();
+        
+        try {
+            if(eleccion.getProperty("eleccio").equalsIgnoreCase("postgres")){
+                persdb.conectar();
+                persdb.selectAllPlanetas();
+                persdb.selectAllEssers();
+                
+            }else if(eleccion.getProperty("eleccio").equalsIgnoreCase("fichero")){
+                persistencia.generarDBP();
+                persistencia.generarDBE();
+            }else{
+                throw new DatosExceptions(8);
+            }
+            
+        } catch (DatosExceptions | EnumsExceptions | SQLException | ClassNotFoundException excep) {
+            System.out.println(excep.getMessage());
+        }
 
 
         switch (args[0]) {
@@ -52,7 +82,7 @@ public class ControllerKalamus {
 
                     case "add":
 
-                        FuncionesModelo_Planetas.crearPlaneta(args);
+                        FuncionesModelo_Planetas.crearPlaneta(args,persdb);
 
                         break;
                     case "list":
@@ -68,7 +98,7 @@ public class ControllerKalamus {
                 switch (args[1]) {
                     case "add":
                         
-                        FuncionesModelo_Essers.crearEsser(args);
+                        FuncionesModelo_Essers.crearEsser(args, persdb);
                         
                         break;
                     case "list":
@@ -84,7 +114,7 @@ public class ControllerKalamus {
 
         }
         
-        
+        persdb.desconectar();
 
     }
 

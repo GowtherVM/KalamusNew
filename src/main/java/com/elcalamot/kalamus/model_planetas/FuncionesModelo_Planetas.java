@@ -9,17 +9,28 @@ import com.elcalamot.kalamus.enums.EnumsExceptions;
 import com.elcalamot.kalamus.exceptions.DatosExceptions;
 import com.elcalamot.kalamus.exceptions.DemanarDades;
 import com.elcalamot.kalamus.model_essers.Essers;
+import com.elcalamot.kalamus.persistencia.Persistencia.PersistenciaDB;
 import com.elcalamot.kalamus.persistencia.Persistencia.PersistenciaFicheros;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Properties;
 
 /**
  *
  * @author Admin
  */
 public class FuncionesModelo_Planetas {
+    
 
-    public static void crearPlaneta(String[] args) throws IOException {
+    public static void crearPlaneta(String[] args, PersistenciaDB persistenciadb) throws IOException {
+        
+        Properties eleccion = new Properties();
+        eleccion.load(new FileInputStream(new File(System.getProperty("user.home")+"/.kalamus/kalamus.prop")));
+        eleccion.getProperty(("eleccio").toLowerCase());
+        
 
         try {
             DemanarDades.comprobarArgs(args, 8);
@@ -38,13 +49,21 @@ public class FuncionesModelo_Planetas {
                 DemanarDades.demanarEnter(Integer.parseInt(args[4]), 1);
                 Planeta nuevoplaneta = new Planeta(args[2].toLowerCase(), Integer.parseInt(args[4]), clima, args[6], args[7]);
                 sistemas.addPlaneta(args[3].toUpperCase(), nuevoplaneta);
-                PersistenciaFicheros.anadirPlaneta(nuevoplaneta, args[3].toUpperCase());
+                
+                
+                if(eleccion.getProperty("eleccio").equalsIgnoreCase("postgres")){
+                    persistenciadb.insertPlaneta(nuevoplaneta, args[3].toUpperCase());
+                }else if(eleccion.getProperty("eleccio").equalsIgnoreCase("fichero")){
+                    PersistenciaFicheros.anadirPlaneta(nuevoplaneta, args[3].toUpperCase());
+                }
+                
+     
                 System.out.println("Se ha generado el nuevo planeta " + nuevoplaneta.getNomplan() + " en la galaxia " + args[3].toUpperCase());
             } else {
                 System.out.println("El planeta ya existia.");
             }
 
-        } catch (EnumsExceptions | DatosExceptions exceptions) {
+        } catch (EnumsExceptions | DatosExceptions | SQLException exceptions) {
             System.out.println(exceptions.getMessage());
         }
     }
