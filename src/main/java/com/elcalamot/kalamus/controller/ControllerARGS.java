@@ -39,12 +39,13 @@ public class ControllerARGS {
 
     private Sistemas sistemas;
     private PersistenciaFicheros persistencia;
-    private PersistenciaDB persdb = new PersistenciaDB();
+    private PersistenciaDB persdb;
 
 
-    public ControllerARGS(Sistemas sistemas, PersistenciaFicheros persistencia) {
+    public ControllerARGS(Sistemas sistemas, PersistenciaFicheros persistencia, PersistenciaDB persdb) {
         this.sistemas = sistemas;
         this.persistencia = persistencia;
+        this.persdb = persdb;
 
     }
     
@@ -52,11 +53,7 @@ public class ControllerARGS {
 
     public void iniciarKalamusArgs(String[] args) throws IOException, DatosExceptions, SQLException {
         
-        crearProperties();
-        generarBDs();
-        
-        
-       
+
         switch (args[0]) {
             case "planet":
 
@@ -218,40 +215,5 @@ public class ControllerARGS {
         
     }
     
-    public static void crearProperties() throws FileNotFoundException, IOException {
-        Properties p = new Properties();
-        File ficheroProperties = new File(System.getProperty("user.home")+"/.kalamus/kalamus.prop");
-        if(!ficheroProperties.exists()){
-            ficheroProperties.createNewFile();
-            p.put("eleccio", "fichero");
-            p.put("bd", "postgres");
-            p.save(new FileOutputStream(System.getProperty("user.home")+"/.kalamus/kalamus.prop"),"");
-        }
-    }
     
-    public void generarBDs() throws FileNotFoundException, IOException{
-        Properties eleccion = new Properties();
-        eleccion.load(new FileInputStream(new File(System.getProperty("user.home")+"/.kalamus/kalamus.prop")));
-        eleccion.getProperty(("eleccio").toLowerCase());
-        
-        //FuncionesModelo_Planetas.testsPlanetas();
-        //FuncionesModelo_Essers.testEssers();
-        
-        try {
-            if(eleccion.getProperty("eleccio").equalsIgnoreCase("postgres")){
-                persdb.conectar();
-                persdb.selectAllPlanetas();
-                persdb.selectAllEssers();
-                
-            }else if(eleccion.getProperty("eleccio").equalsIgnoreCase("fichero")){
-                persistencia.generarDBP();
-                persistencia.generarDBE();
-            }else{
-                throw new DatosExceptions(8);
-            }
-            
-        } catch (DatosExceptions | EnumsExceptions | SQLException | ClassNotFoundException excep) {
-            System.out.println(excep.getMessage());
-        }
-    }
 }
