@@ -4,7 +4,7 @@
  */
 package com.elcalamot.kalamus.model_planetas;
 
-import com.elcalamot.kalamus.controller.ControllerKalamus;
+import com.elcalamot.kalamus.controller.ControllerARGS;
 import com.elcalamot.kalamus.model_essers.Andorians;
 import com.elcalamot.kalamus.model_essers.Essers;
 import com.elcalamot.kalamus.model_essers.EssersExceptions;
@@ -122,7 +122,7 @@ public class Sistemas {
         for (String key : keys) {
             ArrayList<Planeta> planetas = galaxiaplanetas.get(key);
             for (Planeta planeta : planetas) {
-                ControllerKalamus.generarCadenasPlanetas(planeta);
+                ControllerARGS.generarCadenasPlanetas(planeta);
             }
         }
     }
@@ -143,7 +143,7 @@ public class Sistemas {
             ArrayList<Planeta> planetas = galaxiaplanetas.get(key);
             System.out.println("Galaxia:" + key);
             for (Planeta planeta : planetas) {
-                ControllerKalamus.generarCadenasEssers(planeta);
+                ControllerARGS.generarCadenasEssers(planeta);
 
             }
         }

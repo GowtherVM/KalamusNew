@@ -250,10 +250,6 @@ public class PersistenciaDB {
 
     }
 
-    private boolean existePokedom(Planeta planeta) {
-        // código que verifica si existe
-        return false;
-    }
 
     public void conectar() throws SQLException, ClassNotFoundException {
         // Class.forName("com.mysql.cj.jdbc.Driver");
