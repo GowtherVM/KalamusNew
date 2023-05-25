@@ -9,6 +9,8 @@ import com.elcalamot.kalamus.exceptions.DatosExceptions;
 import com.elcalamot.kalamus.model_planetas.Sistemas;
 import com.elcalamot.kalamus.persistencia.Persistencia.PersistenciaDB;
 import com.elcalamot.kalamus.persistencia.Persistencia.PersistenciaFicheros;
+
+import com.elcalamot.kalamus.vistas.DashBoard;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -33,6 +35,7 @@ public class Main {
         PersistenciaFicheros pers = new PersistenciaFicheros();
         PersistenciaDB persdb = new PersistenciaDB();
         ControllerARGS controller = new ControllerARGS(sistemas, pers, persdb);
+        DashBoard vista = new DashBoard();
         pers.comprobarRuta("/planets", ".csv");
         pers.comprobarRuta("/beings", ".csv");
 
@@ -41,7 +44,7 @@ public class Main {
         generarBDs(crearProperties(),persdb,pers);
         
         if(args.length == 0){
-            
+            vista.main(args);
         }else{
            controller.iniciarKalamusArgs(args);
         }
