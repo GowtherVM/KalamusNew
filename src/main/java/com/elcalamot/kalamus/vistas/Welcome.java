@@ -6,12 +6,12 @@ package com.elcalamot.kalamus.vistas;
 
 /**
  *
- * @author espin
+ * @author A200238614
  */
 public class Welcome extends javax.swing.JPanel {
 
     /**
-     * Creates new form Addplanet
+     * Creates new form Welcome
      */
     public Welcome() {
         initComponents();
@@ -26,34 +26,39 @@ public class Welcome extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        welcome1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(51, 51, 51));
-        setMinimumSize(new java.awt.Dimension(100, 100));
-        setPreferredSize(new java.awt.Dimension(0, 501));
+        setForeground(new java.awt.Color(51, 51, 51));
+        setLayout(new java.awt.GridLayout());
 
-        jLabel1.setText("jLabel1");
+        welcome1.setBackground(new java.awt.Color(51, 51, 51));
+        welcome1.setForeground(new java.awt.Color(51, 51, 51));
+        welcome1.setPreferredSize(new java.awt.Dimension(820, 540));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(86, 86, 86)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(559, Short.MAX_VALUE))
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Welcome to Multivers Kalamus!");
+
+        javax.swing.GroupLayout welcome1Layout = new javax.swing.GroupLayout(welcome1);
+        welcome1.setLayout(welcome1Layout);
+        welcome1Layout.setHorizontalGroup(
+            welcome1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 886, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(430, Short.MAX_VALUE))
+        welcome1Layout.setVerticalGroup(
+            welcome1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 540, Short.MAX_VALUE)
         );
+
+        add(welcome1);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel welcome1;
     // End of variables declaration//GEN-END:variables
 }
