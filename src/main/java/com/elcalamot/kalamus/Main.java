@@ -49,6 +49,7 @@ public class Main {
             Principal vista = new Principal();
             vista.setVisible(true);
             
+            
         }else{
            controller.iniciarKalamusArgs(args);
         }
@@ -94,8 +95,10 @@ public class Main {
         } catch (DatosExceptions | EnumsExceptions | SQLException | ClassNotFoundException excep) {
             System.out.println(excep.getMessage());
         }
+        
+        
     }
-
+    
     
 }
 

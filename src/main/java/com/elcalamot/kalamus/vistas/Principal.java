@@ -6,30 +6,23 @@ package com.elcalamot.kalamus.vistas;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import static java.awt.event.MouseEvent.BUTTON1;
 
 /**
  *
  * @author A200238614
  */
 public class Principal extends javax.swing.JFrame implements ActionListener{
-    AddPlanets addp = new AddPlanets();
-    ListPlanets listp = new ListPlanets();
-    Welcome wel = new Welcome();
+
     
     /**
      * Creates new form Principal
      */
     public Principal() {
         initComponents();
-        
         this.setLocationRelativeTo(null);
         
-        contenedor.add(wel);
-        contenedor.validate();
-        contenedor.repaint();
         
-        addplanet.addActionListener(this);
-        listplanet.addActionListener(this);
         
     }
 
@@ -46,44 +39,62 @@ public class Principal extends javax.swing.JFrame implements ActionListener{
         jPanel1 = new javax.swing.JPanel();
         addplanet = new javax.swing.JButton();
         listplanet = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Welcome!");
         setSize(new java.awt.Dimension(850, 500));
 
         contenedor.setBackground(new java.awt.Color(51, 51, 51));
+        contenedor.setForeground(new java.awt.Color(51, 51, 51));
         contenedor.setMinimumSize(new java.awt.Dimension(820, 500));
         contenedor.setPreferredSize(new java.awt.Dimension(850, 500));
+        contenedor.setLayout(new java.awt.BorderLayout());
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel1.setForeground(new java.awt.Color(102, 102, 102));
         jPanel1.setMinimumSize(new java.awt.Dimension(850, 35));
         jPanel1.setPreferredSize(new java.awt.Dimension(820, 35));
         jPanel1.setRequestFocusEnabled(false);
 
         addplanet.setText("AddPlanet");
+        addplanet.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addplanetMouseClicked(evt);
+            }
+        });
         jPanel1.add(addplanet);
 
         listplanet.setText("ListPlanet");
         jPanel1.add(listplanet);
 
-        javax.swing.GroupLayout contenedorLayout = new javax.swing.GroupLayout(contenedor);
-        contenedor.setLayout(contenedorLayout);
-        contenedorLayout.setHorizontalGroup(
-            contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contenedorLayout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 850, Short.MAX_VALUE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        contenedorLayout.setVerticalGroup(
-            contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contenedorLayout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap(465, Short.MAX_VALUE))
-        );
+        contenedor.add(jPanel1, java.awt.BorderLayout.PAGE_START);
+
+        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel2.setForeground(new java.awt.Color(51, 51, 51));
+        jPanel2.setLayout(new java.awt.GridLayout());
+
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Welcome to Multivers Kalamus!");
+        jPanel2.add(jLabel1);
+
+        contenedor.add(jPanel2, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(contenedor, java.awt.BorderLayout.LINE_START);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void addplanetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addplanetMouseClicked
+        // TODO add your handling code here:
+        if(evt.getButton() == BUTTON1){
+            AddPlanet addp = new AddPlanet();
+            addp.setVisible(true);
+        }        
+    }//GEN-LAST:event_addplanetMouseClicked
 
     /**
      * @param args the command line arguments
@@ -123,7 +134,9 @@ public class Principal extends javax.swing.JFrame implements ActionListener{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addplanet;
     private javax.swing.JPanel contenedor;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JButton listplanet;
     // End of variables declaration//GEN-END:variables
 

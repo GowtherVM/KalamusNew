@@ -22,13 +22,8 @@ import com.elcalamot.kalamus.model_planetas.Sistemas;
 import com.elcalamot.kalamus.persistencia.Persistencia.PersistenciaDB;
 import com.elcalamot.kalamus.persistencia.Persistencia.PersistenciaFicheros;
 import com.elcalamot.kalamus.vistas.Vistas;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Properties;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.sql.SQLException;
 
 /**
@@ -61,7 +56,7 @@ public class ControllerARGS {
 
                     case "add":
 
-                        FuncionesModelo_Planetas.crearPlaneta(args,persdb);
+                        FuncionesModelo_Planetas.crearPlaneta(args,"args");
 
                         break;
                     case "list":
@@ -202,8 +197,9 @@ public class ControllerARGS {
     }
     
     
-    public static void generarCadenasPlanetas(Planeta plan){
+    public static String generarCadenasPlanetas(Planeta plan){
         ArrayList<String> cadenas = new ArrayList();
+        String nombres = plan.getNomplan() + "\n";
         cadenas.add("Planeta: " + plan.getNomplan());
         cadenas.add("   Poblacion maxima: "+plan.getPoblacio_max());
         cadenas.add("   Poblacion actual: "+plan.getLista().size());
@@ -213,6 +209,7 @@ public class ControllerARGS {
         cadenas.add(" ");
         Vistas.mostrarInformacion(cadenas);
         
+        return nombres;
     }
     
     

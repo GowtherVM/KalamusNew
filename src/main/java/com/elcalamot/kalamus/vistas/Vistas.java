@@ -5,7 +5,7 @@
 package com.elcalamot.kalamus.vistas;
 
 import java.util.ArrayList;
-
+    
 /**
  *
  * @author Admin
@@ -16,8 +16,11 @@ public class Vistas {
         
         for(String inf: informacion){
             System.out.println(inf);
+
         }
         
+        
     }
-    
+   
+  
 }

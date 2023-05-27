@@ -117,14 +117,17 @@ public class Sistemas {
         return null;
     }
 
-    public void listPlanetas() {
+    public ArrayList <String> listPlanetas() {
+        ArrayList <String> listp = new ArrayList();
+        listp.add("No diponibles:" + "\n");
         Set<String> keys = galaxiaplanetas.keySet();
         for (String key : keys) {
             ArrayList<Planeta> planetas = galaxiaplanetas.get(key);
             for (Planeta planeta : planetas) {
-                ControllerARGS.generarCadenasPlanetas(planeta);
+                listp.add(ControllerARGS.generarCadenasPlanetas(planeta));
             }
         }
+        return listp;
     }
 
     public boolean existeGalaxia(String galaxia) {
