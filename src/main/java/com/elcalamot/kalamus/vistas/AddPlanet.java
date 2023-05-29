@@ -35,7 +35,7 @@ public class AddPlanet extends javax.swing.JFrame {
     }
 
     public void habilitarBoton() {
-        if (!this.nombre1.getText().isEmpty() && !this.galaxia1.getText().isEmpty() && !this.habitantes1.getText().isEmpty()) {
+        if (!this.nombre1.getText().isEmpty() && !this.galaxia1.getText().isEmpty()) {
 
             this.añadirplaneta.setEnabled(true);
 
@@ -65,7 +65,6 @@ public class AddPlanet extends javax.swing.JFrame {
         flora = new javax.swing.JLabel();
         galaxia1 = new javax.swing.JTextField();
         habitantes = new javax.swing.JLabel();
-        habitantes1 = new javax.swing.JTextField();
         clima = new javax.swing.JLabel();
         clima1 = new javax.swing.JComboBox<>();
         nombre2 = new javax.swing.JLabel();
@@ -73,12 +72,13 @@ public class AddPlanet extends javax.swing.JFrame {
         peces = new javax.swing.JLabel();
         flora1 = new javax.swing.JRadioButton();
         pez1 = new javax.swing.JRadioButton();
+        habitants1 = new javax.swing.JSpinner();
         jPanel1 = new javax.swing.JPanel();
         añadirplaneta = new javax.swing.JButton();
 
         this.setLocationRelativeTo(null);
         mensaje.setMinimumSize(new java.awt.Dimension(400, 300));
-        mensaje.getContentPane().setLayout(new java.awt.GridLayout());
+        mensaje.getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
         mensajepanel.setEditable(false);
         mensajepanel.setBackground(new java.awt.Color(102, 102, 102));
@@ -137,16 +137,6 @@ public class AddPlanet extends javax.swing.JFrame {
         habitantes.setForeground(new java.awt.Color(204, 204, 204));
         habitantes.setText("Habitantes(Maximos):");
 
-        habitantes1.setActionCommand("<Not Set>");
-        habitantes1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                habitantes1KeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                habitantes1KeyTyped(evt);
-            }
-        });
-
         clima.setBackground(new java.awt.Color(204, 204, 204));
         clima.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         clima.setForeground(new java.awt.Color(204, 204, 204));
@@ -169,6 +159,8 @@ public class AddPlanet extends javax.swing.JFrame {
         peces.setForeground(new java.awt.Color(204, 204, 204));
         peces.setText("Fauna aquatica:");
 
+        habitants1.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -189,7 +181,7 @@ public class AddPlanet extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(habitantes)
                         .addGap(18, 18, 18)
-                        .addComponent(habitantes1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(habitants1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(clima)
                         .addGap(18, 18, 18)
@@ -231,7 +223,7 @@ public class AddPlanet extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                             .addComponent(habitantes)
-                                            .addComponent(habitantes1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(habitants1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                             .addComponent(clima)
@@ -241,7 +233,7 @@ public class AddPlanet extends javax.swing.JFrame {
                                     .addComponent(flora1))
                                 .addGap(18, 18, 18)
                                 .addComponent(peces)))
-                        .addGap(0, 169, Short.MAX_VALUE)))
+                        .addGap(0, 175, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -265,22 +257,12 @@ public class AddPlanet extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void habitantes1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_habitantes1KeyTyped
-        int key = evt.getKeyChar();
-        boolean numeros = key > 0;
-
-        if (!numeros) {
-            evt.consume();
-        }
-
-    }//GEN-LAST:event_habitantes1KeyTyped
-
     private void añadirplanetaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_añadirplanetaMouseClicked
         if (evt.getButton() == BUTTON1) {
 
             String nombre = this.nombre1.getText();
             String galaxia = this.galaxia1.getText();
-            String habitantes = this.habitantes1.getText();
+            String habitantes = this.habitants1.getValue().toString();
             String clima = this.clima1.getSelectedItem().toString();
             boolean flora = this.flora1.isSelected();
             boolean pez = this.pez1.isSelected();
@@ -312,7 +294,6 @@ public class AddPlanet extends javax.swing.JFrame {
 
             this.nombre1.setText(null);
             this.galaxia1.setText(null);
-            this.habitantes1.setText(null);
             this.flora1.setSelected(false);
             this.pez1.setSelected(false);
 
@@ -330,10 +311,6 @@ public class AddPlanet extends javax.swing.JFrame {
     private void galaxia1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_galaxia1KeyReleased
         habilitarBoton();
     }//GEN-LAST:event_galaxia1KeyReleased
-
-    private void habitantes1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_habitantes1KeyReleased
-        habilitarBoton();
-    }//GEN-LAST:event_habitantes1KeyReleased
 
     /**
      * @param args the command line arguments
@@ -379,7 +356,7 @@ public class AddPlanet extends javax.swing.JFrame {
     private javax.swing.JTextField galaxia1;
     private javax.swing.JLabel galaxia2;
     private javax.swing.JLabel habitantes;
-    private javax.swing.JTextField habitantes1;
+    private javax.swing.JSpinner habitants1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

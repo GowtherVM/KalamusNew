@@ -111,7 +111,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="habitantes" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="habitantes1" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="habitants1" min="-2" pref="100" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="clima" min="-2" max="-2" attributes="0"/>
@@ -163,7 +163,7 @@
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
                                               <Component id="habitantes" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="habitantes1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="habitants1" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
@@ -179,7 +179,7 @@
                                   <Component id="peces" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="0" pref="169" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="175" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -272,15 +272,6 @@
             <Property name="text" type="java.lang.String" value="Habitantes(Maximos):"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="habitantes1">
-          <Properties>
-            <Property name="actionCommand" type="java.lang.String" value="&lt;Not Set&gt;"/>
-          </Properties>
-          <Events>
-            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="habitantes1KeyReleased"/>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="habitantes1KeyTyped"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JLabel" name="clima">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -354,6 +345,13 @@
         <Component class="javax.swing.JRadioButton" name="flora1">
         </Component>
         <Component class="javax.swing.JRadioButton" name="pez1">
+        </Component>
+        <Component class="javax.swing.JSpinner" name="habitants1">
+          <Properties>
+            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+              <SpinnerModel initial="1" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
+            </Property>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

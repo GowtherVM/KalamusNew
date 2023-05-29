@@ -24,8 +24,21 @@ public class AddBeing extends javax.swing.JFrame {
         initComponents();
         Sistemas sis = Sistemas.getInstance();
         this.setLocationRelativeTo(null);
-
-
+        
+            this.latinum1.setVisible(false);
+            this.latinum.setVisible(false);
+            this.genere.setVisible(true);
+            this.genere1.setVisible(true);
+            this.edad.setVisible(true);
+            this.edad1.setVisible(true);
+            this.flora.setVisible(false);
+            this.pez.setVisible(false);
+            this.fuerza.setVisible(false);
+            this.fuerza1.setVisible(false);
+            this.meditacion.setVisible(false);
+            this.meditacion1.setVisible(false);
+            this.rango.setVisible(false);
+            this.rango1.setVisible(false);
 
         ArrayList<String> listb = sis.nombresEssers();
         planetexist.append("No disponibles: \n");
@@ -69,16 +82,22 @@ public class AddBeing extends javax.swing.JFrame {
         planeta2 = new javax.swing.JLabel();
         esser1 = new javax.swing.JComboBox<>();
         esser = new javax.swing.JLabel();
-        humans = new javax.swing.JPanel();
-        nombre3 = new javax.swing.JLabel();
-        nombre4 = new javax.swing.JLabel();
-        galaxia2 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
         linea = new javax.swing.JLabel();
-        andorianos = new javax.swing.JPanel();
-        rango = new javax.swing.JLabel();
-        rango1 = new javax.swing.JComboBox<>();
-        ferengi = new javax.swing.JPanel();
+        datosgenerales = new javax.swing.JPanel();
+        genere = new javax.swing.JComboBox<>();
+        latinum1 = new javax.swing.JLabel();
+        latinum = new javax.swing.JSpinner();
+        genere1 = new javax.swing.JLabel();
+        edad1 = new javax.swing.JLabel();
+        edad = new javax.swing.JSpinner();
+        meditacion1 = new javax.swing.JLabel();
+        meditacion = new javax.swing.JSpinner();
+        fuerza1 = new javax.swing.JLabel();
+        fuerza = new javax.swing.JSpinner();
+        flora = new javax.swing.JRadioButton();
+        pez = new javax.swing.JRadioButton();
+        rango = new javax.swing.JComboBox<>();
+        rango1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         añadirbeing = new javax.swing.JButton();
 
@@ -155,101 +174,148 @@ public class AddBeing extends javax.swing.JFrame {
         esser.setForeground(new java.awt.Color(204, 204, 204));
         esser.setText("Esser:");
 
-        humans.setBackground(new java.awt.Color(51, 51, 51));
-
-        nombre3.setBackground(new java.awt.Color(204, 204, 204));
-        nombre3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        nombre3.setForeground(new java.awt.Color(204, 204, 204));
-        nombre3.setText("Edad:");
-
-        nombre4.setBackground(new java.awt.Color(204, 204, 204));
-        nombre4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        nombre4.setForeground(new java.awt.Color(204, 204, 204));
-        nombre4.setText("Sexo:");
-
-        galaxia2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                galaxia2KeyReleased(evt);
-            }
-        });
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MACULI", "FEMENI", " " }));
-
-        javax.swing.GroupLayout humansLayout = new javax.swing.GroupLayout(humans);
-        humans.setLayout(humansLayout);
-        humansLayout.setHorizontalGroup(
-            humansLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(humansLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(humansLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(humansLayout.createSequentialGroup()
-                        .addComponent(nombre3)
-                        .addGap(18, 18, 18)
-                        .addComponent(galaxia2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(humansLayout.createSequentialGroup()
-                        .addComponent(nombre4)
-                        .addGap(18, 18, 18)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        humansLayout.setVerticalGroup(
-            humansLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(humansLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(humansLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nombre3)
-                    .addComponent(galaxia2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(humansLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nombre4)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(196, Short.MAX_VALUE))
-        );
-
         linea.setBackground(new java.awt.Color(204, 204, 204));
         linea.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         linea.setForeground(new java.awt.Color(204, 204, 204));
         linea.setText("---------------------------------------------------------------------------------------------------------");
 
-        andorianos.setBackground(new java.awt.Color(51, 51, 51));
+        datosgenerales.setBackground(new java.awt.Color(51, 51, 51));
 
-        rango.setBackground(new java.awt.Color(204, 204, 204));
-        rango.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        rango.setForeground(new java.awt.Color(204, 204, 204));
-        rango.setText("Rango:");
+        genere.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MASCULI", "FEMENI" }));
+        genere.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                genereActionPerformed(evt);
+            }
+        });
 
-        rango1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DEFENSOR", "LLUITADOR", "CAVALLER", "ENTRENADOR" }));
+        latinum1.setBackground(new java.awt.Color(204, 204, 204));
+        latinum1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        latinum1.setForeground(new java.awt.Color(204, 204, 204));
+        latinum1.setText("Latimum:");
 
-        javax.swing.GroupLayout andorianosLayout = new javax.swing.GroupLayout(andorianos);
-        andorianos.setLayout(andorianosLayout);
-        andorianosLayout.setHorizontalGroup(
-            andorianosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(andorianosLayout.createSequentialGroup()
+        latinum.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+
+        genere1.setBackground(new java.awt.Color(204, 204, 204));
+        genere1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        genere1.setForeground(new java.awt.Color(204, 204, 204));
+        genere1.setText("Genere:");
+
+        edad1.setBackground(new java.awt.Color(204, 204, 204));
+        edad1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        edad1.setForeground(new java.awt.Color(204, 204, 204));
+        edad1.setText("Edad:");
+
+        edad.setModel(new javax.swing.SpinnerNumberModel(1, 1, 130, 1));
+        edad.setEnabled(false);
+
+        meditacion1.setBackground(new java.awt.Color(204, 204, 204));
+        meditacion1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        meditacion1.setForeground(new java.awt.Color(204, 204, 204));
+        meditacion1.setText("Meditacion:");
+
+        meditacion.setModel(new javax.swing.SpinnerNumberModel(0, 0, 10, 1));
+
+        fuerza1.setBackground(new java.awt.Color(204, 204, 204));
+        fuerza1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        fuerza1.setForeground(new java.awt.Color(204, 204, 204));
+        fuerza1.setText("Fuerza:");
+
+        fuerza.setModel(new javax.swing.SpinnerNumberModel(50, 50, 350, 1));
+
+        flora.setBackground(new java.awt.Color(51, 51, 51));
+        flora.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        flora.setForeground(new java.awt.Color(204, 204, 204));
+        flora.setText("Come flora roja");
+        flora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                floraActionPerformed(evt);
+            }
+        });
+
+        pez.setBackground(new java.awt.Color(51, 51, 51));
+        pez.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        pez.setForeground(new java.awt.Color(204, 204, 204));
+        pez.setText("Come pez");
+
+        rango.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DEFENSOR", "ENTRENADOR", "LLUITADOR", "CAVALLER" }));
+        rango.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rangoActionPerformed(evt);
+            }
+        });
+
+        rango1.setBackground(new java.awt.Color(204, 204, 204));
+        rango1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        rango1.setForeground(new java.awt.Color(204, 204, 204));
+        rango1.setText("Rango:");
+
+        javax.swing.GroupLayout datosgeneralesLayout = new javax.swing.GroupLayout(datosgenerales);
+        datosgenerales.setLayout(datosgeneralesLayout);
+        datosgeneralesLayout.setHorizontalGroup(
+            datosgeneralesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(datosgeneralesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(rango)
-                .addGap(18, 18, 18)
-                .addComponent(rango1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(datosgeneralesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(datosgeneralesLayout.createSequentialGroup()
+                        .addComponent(genere1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(genere, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(datosgeneralesLayout.createSequentialGroup()
+                        .addComponent(edad1)
+                        .addGap(18, 18, 18)
+                        .addComponent(edad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(datosgeneralesLayout.createSequentialGroup()
+                        .addComponent(latinum1)
+                        .addGap(15, 15, 15)
+                        .addComponent(latinum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(datosgeneralesLayout.createSequentialGroup()
+                        .addComponent(meditacion1)
+                        .addGap(18, 18, 18)
+                        .addComponent(meditacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(flora)
+                    .addGroup(datosgeneralesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(datosgeneralesLayout.createSequentialGroup()
+                            .addComponent(rango1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(rango, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, datosgeneralesLayout.createSequentialGroup()
+                            .addComponent(fuerza1)
+                            .addGap(18, 18, 18)
+                            .addComponent(fuerza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(pez))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        andorianosLayout.setVerticalGroup(
-            andorianosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(andorianosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(andorianosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rango)
-                    .addComponent(rango1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout ferengiLayout = new javax.swing.GroupLayout(ferengi);
-        ferengi.setLayout(ferengiLayout);
-        ferengiLayout.setHorizontalGroup(
-            ferengiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        ferengiLayout.setVerticalGroup(
-            ferengiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        datosgeneralesLayout.setVerticalGroup(
+            datosgeneralesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(datosgeneralesLayout.createSequentialGroup()
+                .addGroup(datosgeneralesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(genere, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(genere1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(datosgeneralesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(latinum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(latinum1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(datosgeneralesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(edad1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(edad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(datosgeneralesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(meditacion)
+                    .addComponent(meditacion1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(datosgeneralesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fuerza1)
+                    .addComponent(fuerza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(flora)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(datosgeneralesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rango1)
+                    .addComponent(rango, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pez)
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout baseLayout = new javax.swing.GroupLayout(base);
@@ -263,29 +329,23 @@ public class AddBeing extends javax.swing.JFrame {
                 .addGroup(baseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(baseLayout.createSequentialGroup()
                         .addGroup(baseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(planeta2)
-                            .addComponent(esser))
-                        .addGap(18, 18, 18)
-                        .addGroup(baseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(esser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(galaxia1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(627, 627, 627))
-                    .addGroup(baseLayout.createSequentialGroup()
-                        .addGroup(baseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, baseLayout.createSequentialGroup()
+                            .addGroup(baseLayout.createSequentialGroup()
                                 .addComponent(nombre2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(nombre, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nombre)
+                            .addComponent(linea)
                             .addGroup(baseLayout.createSequentialGroup()
-                                .addGroup(baseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(ferengi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(linea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(andorianos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(humans, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+                                .addGroup(baseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(planeta2)
+                                    .addComponent(esser))
+                                .addGap(18, 18, 18)
+                                .addGroup(baseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(esser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(galaxia1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 10, Short.MAX_VALUE))
+                    .addComponent(datosgenerales, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         baseLayout.setVerticalGroup(
             baseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -311,12 +371,8 @@ public class AddBeing extends javax.swing.JFrame {
                             .addComponent(esser))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(linea)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(baseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(humans, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(andorianos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(ferengi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(12, 12, 12)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(datosgenerales, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -363,39 +419,113 @@ public class AddBeing extends javax.swing.JFrame {
 
     private void esser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_esser1ActionPerformed
         if (this.esser1.getSelectedItem().toString().equalsIgnoreCase("huma")) {
-            this.humans.setVisible(true);
-            this.andorianos.setVisible(false);
-            this.ferengi.setVisible(false);
-            base.repaint();
-            base.revalidate();
-            System.out.println("-");
-        } else if (this.esser1.getSelectedItem().toString().equalsIgnoreCase("andoria")) {
-            this.humans.setVisible(false);
-            this.andorianos.setVisible(true);
-            this.ferengi.setVisible(false);
-            base.repaint();
-            base.revalidate();
-            System.out.println("--");
-        } else if (this.esser1.getSelectedItem().toString().equalsIgnoreCase("klingon")) {
+            this.latinum1.setVisible(false);
+            this.latinum.setVisible(false);
+            this.genere.setVisible(true);
+            this.genere1.setVisible(true);
+            this.edad.setVisible(true);
+            this.edad1.setVisible(true);
+            this.flora.setVisible(false);
+            this.pez.setVisible(false);
+            this.fuerza.setVisible(false);
+            this.fuerza1.setVisible(false);
+            this.meditacion.setVisible(false);
+            this.meditacion1.setVisible(false);
+            this.rango.setVisible(false);
+            this.rango1.setVisible(false);
+            
 
+        } else if (this.esser1.getSelectedItem().toString().equalsIgnoreCase("andoria")) {     
+            this.latinum1.setVisible(false);
+            this.latinum.setVisible(false);
+            this.genere.setVisible(false);
+            this.genere1.setVisible(false);
+            this.edad.setVisible(false);
+            this.edad1.setVisible(false);
+            this.flora.setVisible(false);
+            this.pez.setVisible(false);
+            this.fuerza.setVisible(false);
+            this.fuerza1.setVisible(false);
+            this.meditacion.setVisible(false);
+            this.meditacion1.setVisible(false);
+            this.rango.setVisible(true);
+            this.rango1.setVisible(true);
+
+        } else if (this.esser1.getSelectedItem().toString().equalsIgnoreCase("klingon")) {
+            this.latinum1.setVisible(false);
+            this.latinum.setVisible(false);
+            this.genere.setVisible(false);
+            this.genere1.setVisible(false);
+            this.edad.setVisible(false);
+            this.edad1.setVisible(false);
+            this.flora.setVisible(false);
+            this.pez.setVisible(false);
+            this.fuerza.setVisible(true);
+            this.fuerza1.setVisible(true);
+            this.meditacion.setVisible(false);
+            this.meditacion1.setVisible(false);
+            this.rango.setVisible(false);
+            this.rango1.setVisible(false);
         } else if (this.esser1.getSelectedItem().toString().equalsIgnoreCase("ferengi")) {
-            this.humans.setVisible(false);
-            this.andorianos.setVisible(false);
-            this.ferengi.setVisible(true);
-            base.repaint();
-            base.revalidate();
-            System.out.println("---");
+            this.latinum1.setVisible(true);
+            this.latinum.setVisible(true);
+            this.genere.setVisible(false);
+            this.genere1.setVisible(false);
+            this.edad.setVisible(false);
+            this.edad1.setVisible(false);
+            this.flora.setVisible(false);
+            this.pez.setVisible(false);
+            this.fuerza.setVisible(false);
+            this.fuerza1.setVisible(false);
+            this.meditacion.setVisible(false);
+            this.meditacion1.setVisible(false);
+            this.rango.setVisible(false);
+            this.rango1.setVisible(false);
 
         } else if (this.esser1.getSelectedItem().toString().equalsIgnoreCase("nibiria")) {
-
+            this.latinum1.setVisible(false);
+            this.latinum.setVisible(false);
+            this.genere.setVisible(false);
+            this.genere1.setVisible(false);
+            this.edad.setVisible(false);
+            this.edad1.setVisible(false);
+            this.flora.setVisible(true);
+            this.pez.setVisible(true);
+            this.fuerza.setVisible(false);
+            this.fuerza1.setVisible(false);
+            this.meditacion.setVisible(false);
+            this.meditacion1.setVisible(false);
+            this.rango.setVisible(false);
+            this.rango1.setVisible(false);
         } else if (this.esser1.getSelectedItem().toString().equalsIgnoreCase("vulcania")) {
-
+            this.latinum1.setVisible(false);
+            this.latinum.setVisible(false);
+            this.genere.setVisible(false);
+            this.genere1.setVisible(false);
+            this.edad.setVisible(false);
+            this.edad1.setVisible(false);
+            this.flora.setVisible(false);
+            this.pez.setVisible(false);
+            this.fuerza.setVisible(false);
+            this.fuerza1.setVisible(false);
+            this.meditacion.setVisible(true);
+            this.meditacion1.setVisible(true);
+            this.rango.setVisible(false);
+            this.rango1.setVisible(false);
         }
     }//GEN-LAST:event_esser1ActionPerformed
 
-    private void galaxia2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_galaxia2KeyReleased
+    private void genereActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genereActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_galaxia2KeyReleased
+    }//GEN-LAST:event_genereActionPerformed
+
+    private void floraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_floraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_floraActionPerformed
+
+    private void rangoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rangoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rangoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -434,30 +564,36 @@ public class AddBeing extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel andorianos;
     private javax.swing.JButton añadirbeing;
     private javax.swing.JPanel base;
+    private javax.swing.JPanel datosgenerales;
+    private javax.swing.JSpinner edad;
+    private javax.swing.JLabel edad1;
     private javax.swing.JLabel esser;
     private javax.swing.JComboBox<String> esser1;
-    private javax.swing.JPanel ferengi;
+    private javax.swing.JRadioButton flora;
+    private javax.swing.JSpinner fuerza;
+    private javax.swing.JLabel fuerza1;
     private javax.swing.JTextField galaxia1;
-    private javax.swing.JTextField galaxia2;
-    private javax.swing.JPanel humans;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> genere;
+    private javax.swing.JLabel genere1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSpinner latinum;
+    private javax.swing.JLabel latinum1;
     private javax.swing.JLabel linea;
+    private javax.swing.JSpinner meditacion;
+    private javax.swing.JLabel meditacion1;
     private javax.swing.JDialog mensaje;
     private javax.swing.JTextArea mensajepanel;
     private javax.swing.JLabel nombre;
     private javax.swing.JTextField nombre1;
     private javax.swing.JLabel nombre2;
-    private javax.swing.JLabel nombre3;
-    private javax.swing.JLabel nombre4;
+    private javax.swing.JRadioButton pez;
     private javax.swing.JLabel planeta2;
     private javax.swing.JTextArea planetexist;
-    private javax.swing.JLabel rango;
-    private javax.swing.JComboBox<String> rango1;
+    private javax.swing.JComboBox<String> rango;
+    private javax.swing.JLabel rango1;
     // End of variables declaration//GEN-END:variables
 }
