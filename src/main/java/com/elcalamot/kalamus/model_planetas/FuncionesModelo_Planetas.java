@@ -24,7 +24,7 @@ import java.util.Properties;
  */
 public class FuncionesModelo_Planetas {
 
-    public static String crearPlaneta(String[] args, String modo) throws IOException {
+    public static String crearPlaneta(String[] args, String modo) throws IOException, SQLException, ClassNotFoundException {
 
 
         PersistenciaDB persistenciadb = new PersistenciaDB();
@@ -32,7 +32,7 @@ public class FuncionesModelo_Planetas {
         eleccion.load(new FileInputStream(new File(System.getProperty("user.home") + "/.kalamus/kalamus.prop")));
         eleccion.getProperty(("eleccio").toLowerCase());
         String mensaje = "";
-
+        persistenciadb.conectar();
         try {
             DemanarDades.comprobarArgs(args, 8);
             Sistemas sistemas = Sistemas.getInstance();
@@ -75,11 +75,12 @@ public class FuncionesModelo_Planetas {
             }
         } catch (NumberFormatException num) {
             if (modo == "jframe") {
-                mensaje = "Se espraba un valor numerico en habitantes. No se ha generado el planetas.";
+                mensaje = "Se espraba un valor numerico en habitantes. \n No se ha generado el planetas.";
             } else {
-                System.out.println("Se espraba un valor numerico en habitantes. No se ha generado el planetas.");
+                System.out.println("Se espraba un valor numerico en habitantes.\n No se ha generado el planetas.");
             }
         }
+        persistenciadb.desconectar();
         return mensaje;
     }
 

@@ -8,6 +8,7 @@ import com.elcalamot.kalamus.model_planetas.FuncionesModelo_Planetas;
 import com.elcalamot.kalamus.model_planetas.Sistemas;
 import static java.awt.event.MouseEvent.BUTTON1;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -24,10 +25,22 @@ public class AddPlanet extends javax.swing.JFrame {
         Sistemas sis = Sistemas.getInstance();
         this.setLocationRelativeTo(null);
 
-        ArrayList<String> listp = sis.listPlanetas();
+        ArrayList<String> listp = sis.nombresPlanetas();
+        planetexist.append("No disponibles: \n");
         for (String linea : listp) {
-            planetexist.append(linea);
+            planetexist.append(linea + "\n");
 
+        }
+
+    }
+
+    public void habilitarBoton() {
+        if (!this.nombre1.getText().isEmpty() && !this.galaxia1.getText().isEmpty() && !this.habitantes1.getText().isEmpty()) {
+
+            this.añadirplaneta.setEnabled(true);
+
+        } else {
+            this.añadirplaneta.setEnabled(false);
         }
 
     }
@@ -63,28 +76,23 @@ public class AddPlanet extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         añadirplaneta = new javax.swing.JButton();
 
-        mensajepanel.setBackground(new java.awt.Color(204, 204, 204));
+        this.setLocationRelativeTo(null);
+        mensaje.setMinimumSize(new java.awt.Dimension(400, 300));
+        mensaje.getContentPane().setLayout(new java.awt.GridLayout());
+
+        mensajepanel.setEditable(false);
+        mensajepanel.setBackground(new java.awt.Color(102, 102, 102));
         mensajepanel.setColumns(20);
-        mensajepanel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        mensajepanel.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        mensajepanel.setLineWrap(true);
         mensajepanel.setRows(5);
-        mensajepanel.setSelectedTextColor(new java.awt.Color(0, 0, 0));
         jScrollPane2.setViewportView(mensajepanel);
 
-        javax.swing.GroupLayout mensajeLayout = new javax.swing.GroupLayout(mensaje.getContentPane());
-        mensaje.getContentPane().setLayout(mensajeLayout);
-        mensajeLayout.setHorizontalGroup(
-            mensajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
-        );
-        mensajeLayout.setVerticalGroup(
-            mensajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-        );
+        mensaje.getContentPane().add(jScrollPane2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Añadir Planetas");
         setMinimumSize(new java.awt.Dimension(820, 500));
-        setPreferredSize(new java.awt.Dimension(820, 500));
         setSize(new java.awt.Dimension(820, 500));
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
@@ -107,10 +115,22 @@ public class AddPlanet extends javax.swing.JFrame {
         nombre.setForeground(new java.awt.Color(204, 204, 204));
         nombre.setText("DATOS");
 
+        nombre1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                nombre1KeyReleased(evt);
+            }
+        });
+
         flora.setBackground(new java.awt.Color(204, 204, 204));
         flora.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         flora.setForeground(new java.awt.Color(204, 204, 204));
         flora.setText("Flora roja:");
+
+        galaxia1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                galaxia1KeyReleased(evt);
+            }
+        });
 
         habitantes.setBackground(new java.awt.Color(204, 204, 204));
         habitantes.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -119,6 +139,9 @@ public class AddPlanet extends javax.swing.JFrame {
 
         habitantes1.setActionCommand("<Not Set>");
         habitantes1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                habitantes1KeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 habitantes1KeyTyped(evt);
             }
@@ -229,6 +252,7 @@ public class AddPlanet extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(820, 35));
 
         añadirplaneta.setText("Añadir");
+        añadirplaneta.setEnabled(false);
         añadirplaneta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 añadirplanetaMouseClicked(evt);
@@ -272,17 +296,17 @@ public class AddPlanet extends javax.swing.JFrame {
             } else if (flora == false) {
                 dato2 = "no";
             }
-
-            String[] datos = {"", "", nombre, galaxia, habitantes, clima, dato1, dato2};
             try {
-                String out = FuncionesModelo_Planetas.crearPlaneta(datos, "jframe");
+                String[] datos = {"", "", nombre, galaxia, habitantes, clima, dato1, dato2};
+                String out = "ERROR: Campo vacio o sin el valor esperado.";
+                if (!nombre.isBlank() && !galaxia.isBlank() && !habitantes.isBlank()) {
+                    out = FuncionesModelo_Planetas.crearPlaneta(datos, "jframe");
+                }
+
                 this.mensajepanel.append(out);
                 this.mensaje.setVisible(true);
-        
-                 }
-    
 
-             catch (IOException e) {
+            } catch (IOException | ClassNotFoundException | SQLException e) {
                 System.out.println(e.getMessage());
             }
 
@@ -292,11 +316,24 @@ public class AddPlanet extends javax.swing.JFrame {
             this.flora1.setSelected(false);
             this.pez1.setSelected(false);
 
-
         }
 
 
     }//GEN-LAST:event_añadirplanetaMouseClicked
+
+    private void nombre1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombre1KeyReleased
+        // TODO add your handling code here:
+        habilitarBoton();
+
+    }//GEN-LAST:event_nombre1KeyReleased
+
+    private void galaxia1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_galaxia1KeyReleased
+        habilitarBoton();
+    }//GEN-LAST:event_galaxia1KeyReleased
+
+    private void habitantes1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_habitantes1KeyReleased
+        habilitarBoton();
+    }//GEN-LAST:event_habitantes1KeyReleased
 
     /**
      * @param args the command line arguments

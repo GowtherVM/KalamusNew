@@ -18,9 +18,9 @@ public class EnumsExceptions extends Exception {
 
     
     private final List<String> missatges = Arrays.asList(
-            "ERROR: Clima incorrecto. Opciones validas: TEMPERAT,FRED,CALID.",
-            "ERROR: Esser incorrecto. Opciones validas: HUMANS,VULCANIANS,ANDORIANS,NIBIRIANS,KLINGON,FERENGI.",
-            "ERROR: Rango incorrecto. Opciones validas: DEFENSOR,ENTRENADOR,LLUITADOR,CAVALLER.");
+            "ERROR: Clima incorrecto.\n Opciones validas: TEMPERAT,FRED,CALID.",
+            "ERROR: Esser incorrecto.\n Opciones validas: HUMANS,VULCANIANS,ANDORIANS,NIBIRIANS,KLINGON,FERENGI.",
+            "ERROR: Rango incorrecto.\n Opciones validas: DEFENSOR,ENTRENADOR,LLUITADOR,CAVALLER.");
     
     private final int code;
 

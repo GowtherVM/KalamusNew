@@ -86,6 +86,25 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="ListPlanet"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="listplanetMouseClicked"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="listbeing">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="ListBeing"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="listbeingMouseClicked"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="addbeing">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="AddBeing"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="addbeingMouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

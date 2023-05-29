@@ -27,7 +27,7 @@ import java.util.Properties;
  */
 public class Main {
 
-    public static void main(String[] args) throws IOException, FileNotFoundException, DatosExceptions, SQLException {
+    public static void main(String[] args) throws IOException, FileNotFoundException, DatosExceptions, SQLException, ClassNotFoundException {
         
         
         

@@ -12,18 +12,15 @@ import static java.awt.event.MouseEvent.BUTTON1;
  *
  * @author A200238614
  */
-public class Principal extends javax.swing.JFrame implements ActionListener{
+public class Principal extends javax.swing.JFrame implements ActionListener {
 
-    
     /**
      * Creates new form Principal
      */
     public Principal() {
         initComponents();
         this.setLocationRelativeTo(null);
-        
-        
-        
+
     }
 
     /**
@@ -39,6 +36,8 @@ public class Principal extends javax.swing.JFrame implements ActionListener{
         jPanel1 = new javax.swing.JPanel();
         addplanet = new javax.swing.JButton();
         listplanet = new javax.swing.JButton();
+        listbeing = new javax.swing.JButton();
+        addbeing = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -67,13 +66,34 @@ public class Principal extends javax.swing.JFrame implements ActionListener{
         jPanel1.add(addplanet);
 
         listplanet.setText("ListPlanet");
+        listplanet.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listplanetMouseClicked(evt);
+            }
+        });
         jPanel1.add(listplanet);
+
+        listbeing.setText("ListBeing");
+        listbeing.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listbeingMouseClicked(evt);
+            }
+        });
+        jPanel1.add(listbeing);
+
+        addbeing.setText("AddBeing");
+        addbeing.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addbeingMouseClicked(evt);
+            }
+        });
+        jPanel1.add(addbeing);
 
         contenedor.add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
         jPanel2.setForeground(new java.awt.Color(51, 51, 51));
-        jPanel2.setLayout(new java.awt.GridLayout());
+        jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 255));
@@ -90,11 +110,32 @@ public class Principal extends javax.swing.JFrame implements ActionListener{
 
     private void addplanetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addplanetMouseClicked
         // TODO add your handling code here:
-        if(evt.getButton() == BUTTON1){
+        if (evt.getButton() == BUTTON1) {
             AddPlanet addp = new AddPlanet();
             addp.setVisible(true);
-        }        
+        }
     }//GEN-LAST:event_addplanetMouseClicked
+
+    private void listplanetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listplanetMouseClicked
+        if (evt.getButton() == BUTTON1) {
+            ListPlanet listp = new ListPlanet();
+            listp.setVisible(true);
+        }
+    }//GEN-LAST:event_listplanetMouseClicked
+
+    private void listbeingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listbeingMouseClicked
+        if (evt.getButton() == BUTTON1) {
+            ListBeing listb = new ListBeing();
+            listb.setVisible(true);
+        }
+    }//GEN-LAST:event_listbeingMouseClicked
+
+    private void addbeingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addbeingMouseClicked
+        if (evt.getButton() == BUTTON1) {
+            AddBeing addb = new AddBeing();
+            addb.setVisible(true);
+        }
+    }//GEN-LAST:event_addbeingMouseClicked
 
     /**
      * @param args the command line arguments
@@ -132,16 +173,18 @@ public class Principal extends javax.swing.JFrame implements ActionListener{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addbeing;
     private javax.swing.JButton addplanet;
     private javax.swing.JPanel contenedor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton listbeing;
     private javax.swing.JButton listplanet;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

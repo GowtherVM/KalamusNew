@@ -20,7 +20,7 @@ public class PlanetaExceptions extends Exception {
     private final List<String> missatges = Arrays.asList(
             "ERROR: Galaxia existe.",
             "ERROR: Mundo existe. ",
-            "ERROR: Este individuo genera sobrepoblacion en el planeta. No puede ser asignado.",
+            "ERROR: Este individuo genera sobrepoblacion en el planeta.\n No puede ser asignado.",
             "ERROR: La base de datos esta intentando añadir un esser a un planeta que ha sido eliminado.");
     
     private final int code;

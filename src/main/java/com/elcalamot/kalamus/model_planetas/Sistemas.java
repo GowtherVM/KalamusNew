@@ -117,17 +117,15 @@ public class Sistemas {
         return null;
     }
 
-    public ArrayList <String> listPlanetas() {
-        ArrayList <String> listp = new ArrayList();
-        listp.add("No diponibles:" + "\n");
+    public void listPlanetas() {
         Set<String> keys = galaxiaplanetas.keySet();
         for (String key : keys) {
             ArrayList<Planeta> planetas = galaxiaplanetas.get(key);
             for (Planeta planeta : planetas) {
-                listp.add(ControllerARGS.generarCadenasPlanetas(planeta));
+                ControllerARGS.generarCadenasPlanetas(planeta);
             }
         }
-        return listp;
+        
     }
 
     public boolean existeGalaxia(String galaxia) {
@@ -150,6 +148,88 @@ public class Sistemas {
 
             }
         }
+    }
+    
+    public ArrayList <String> nombresPlanetas(){
+        ArrayList <String> nombres = new ArrayList();
+        String nombre;
+        
+        Set<String> keys = galaxiaplanetas.keySet();
+        for (String key : keys) {
+            ArrayList<Planeta> planetas = galaxiaplanetas.get(key);
+            for (Planeta planeta : planetas) {
+                nombre = planeta.getNomplan();
+                nombres.add(nombre);
+            }
+        }
+
+        return nombres;
+    }
+    
+    public ArrayList <String> datosPlanetas(){
+        ArrayList <String> datos = new ArrayList();
+        String dato;
+        
+        Set<String> keys = galaxiaplanetas.keySet();
+        for (String key : keys) {
+            ArrayList<Planeta> planetas = galaxiaplanetas.get(key);
+            for (Planeta planeta : planetas) {
+ 
+                dato = "Nombre: " + planeta.getNomplan()+" | "+ "Galaxia: " + key +" | "+ "Clima: " + planeta.getClima() +" | "+ "Habitantes (maximos): " + planeta.getPoblacio_max() +" | "+ "Flora Vermella: "+ planeta.getFlora_vermella() +" | "+ "Essers aquatics: " + planeta.getEssers_aquatics()+"\n";
+                datos.add(dato);
+            }
+        }
+        
+        return datos;
+    }
+    
+    public ArrayList <String> datosBeing(){
+        ArrayList <String> datosbeing = new ArrayList();
+        
+        Set<String> keys = galaxiaplanetas.keySet();
+        for (String key : keys) {
+            ArrayList<Planeta> planetas = galaxiaplanetas.get(key);
+            for (Planeta planeta : planetas) {
+                    datosbeing.add("Planeta: "+planeta.getNomplan() + "\n");
+                    ArrayList <Essers> arrayessers = planeta.getLista();
+                    if(!arrayessers.isEmpty()){
+                        for(Essers esser: arrayessers){
+                            String datos = "Nombre: " + esser.getNom() + "|" + "Raza: " + esser.getEsser()+"|";
+                            
+                            if (esser instanceof Humans) { Humans huma = (Humans) esser; datos = datos + "Edad:" + huma.getEdad() + "|" +"Genero: "+ huma.getGenere()+ "\n";}
+                            else if (esser instanceof Andorians) { Andorians andor = (Andorians) esser;datos = datos + "Rango: " + andor.getRango()+ "\n" ;}
+                            else if (esser instanceof Ferengi) { Ferengi fer = (Ferengi) esser;datos = datos + "Latinum: " + fer.getLatinum()+ "\n";}
+                            else if (esser instanceof Klingon) { Klingon kin = (Klingon) esser;datos = datos + "Fuerza: " + kin.getFuerza() + "\n";}
+                            else if (esser instanceof Nibirians) { Nibirians nib = (Nibirians) esser;datos = datos + "Come flora roja: " + nib.isFlora() + "|"+ "Come pezes: " + nib.isPeix()+ "\n";}
+                            else if (esser instanceof Vulcanians) { Vulcanians vul = (Vulcanians) esser;datos = datos + "Meditacion: "+ vul.getMeditacio()+ "\n" ;}
+                    
+                            datosbeing.add(datos);
+                       }                    
+                    }
+                    else{datosbeing.add("Desabitado. \n");}
+                
+            }
+        }
+        return datosbeing;
+
+    }
+    
+    public ArrayList <String> nombresEssers(){
+        ArrayList <String> datosbeing = new ArrayList();
+        
+        Set<String> keys = galaxiaplanetas.keySet();
+        for (String key : keys) {
+            ArrayList<Planeta> planetas = galaxiaplanetas.get(key);
+            for (Planeta planeta : planetas) {
+                    ArrayList <Essers> arrayessers = planeta.getLista();
+                    if(!arrayessers.isEmpty()){
+                        for(Essers esser: arrayessers){
+                            datosbeing.add(esser.getNom());
+                       }                    
+                    }
+            }
+        }
+        return datosbeing;
     }
 
 }

@@ -172,6 +172,7 @@ public class PersistenciaDB {
 
     public void insertPlaneta(Planeta planeta, String galaxia) throws SQLException {
         // Pendiente verificar primero que existe
+       
         String insert = "insert into planeta (nom_planeta, galaxia, poblacio_max, clima, flora_vermella, essers_aquatics) "
                 + "values (?, ?, ?,?,?,?);";
         PreparedStatement ps = conexio.prepareStatement(insert);

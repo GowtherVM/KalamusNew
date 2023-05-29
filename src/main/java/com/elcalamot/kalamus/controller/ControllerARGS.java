@@ -46,7 +46,7 @@ public class ControllerARGS {
     
     
 
-    public void iniciarKalamusArgs(String[] args) throws IOException, DatosExceptions, SQLException {
+    public void iniciarKalamusArgs(String[] args) throws IOException, DatosExceptions, SQLException, ClassNotFoundException {
         
 
         switch (args[0]) {
@@ -197,19 +197,19 @@ public class ControllerARGS {
     }
     
     
-    public static String generarCadenasPlanetas(Planeta plan){
+    public static ArrayList<String> generarCadenasPlanetas(Planeta plan){
         ArrayList<String> cadenas = new ArrayList();
-        String nombres = plan.getNomplan() + "\n";
+        
         cadenas.add("Planeta: " + plan.getNomplan());
         cadenas.add("   Poblacion maxima: "+plan.getPoblacio_max());
         cadenas.add("   Poblacion actual: "+plan.getLista().size());
         cadenas.add("   Clima: "+plan.getClima());
         cadenas.add("   Flora vermella: "+plan.getFlora_vermella());
         cadenas.add("   Animals acuatics: "+plan.getEssers_aquatics());
-        cadenas.add(" ");
+        cadenas.add("\n ");
         Vistas.mostrarInformacion(cadenas);
         
-        return nombres;
+        return cadenas;
     }
     
     
