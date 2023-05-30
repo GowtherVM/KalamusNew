@@ -10,7 +10,7 @@ import com.elcalamot.kalamus.enums.EnumsExceptions;
  *
  * @author A200238614
  */
-public class Klingon extends Essers {
+public class Klingon extends Essers { //Clase de la raza klingon.
     private int fuerza;
 
     public Klingon(String nom, String esser,int fuerza) throws EnumsExceptions {

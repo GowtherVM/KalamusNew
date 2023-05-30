@@ -27,7 +27,7 @@ public class Enums {
         DEFENSOR,ENTRENADOR,LLUITADOR,CAVALLER
     };
 
-    public static Clima elegirClima(String clima) throws EnumsExceptions{
+    public static Clima elegirClima(String clima) throws EnumsExceptions{ //Combierte la string en Climas.
 
         switch (clima.toLowerCase()) {
             case "fred":
@@ -41,7 +41,7 @@ public class Enums {
         throw new EnumsExceptions(0);
     }
     
-    public static Esser elegirEsser(String nombre) throws EnumsExceptions{
+    public static Esser elegirEsser(String nombre) throws EnumsExceptions{ //Combierte las string en essers.
         
         switch (nombre.toLowerCase()) {
             case "huma":
@@ -63,7 +63,7 @@ public class Enums {
         
     }
     
-    public static Categoria elegirCategoria(Esser especie){
+    public static Categoria elegirCategoria(Esser especie){ //Combierte el Esser en categorias.
         Categoria sucategoria = Categoria.O;
         
         switch (especie) {
@@ -83,7 +83,7 @@ public class Enums {
         return sucategoria;
     }
 
-    public static Rango elegirRango(String rango) throws EnumsExceptions{
+    public static Rango elegirRango(String rango) throws EnumsExceptions{ //Combierte el string en rangos.
         switch (rango.toLowerCase()){
             case "defensor":
                 return Rango.DEFENSOR;

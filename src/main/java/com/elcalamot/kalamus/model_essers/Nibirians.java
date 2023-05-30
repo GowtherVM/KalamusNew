@@ -10,7 +10,7 @@ import com.elcalamot.kalamus.enums.EnumsExceptions;
  *
  * @author A200238614
  */
-public class Nibirians extends Essers {
+public class Nibirians extends Essers { //Clase de la raza Nibirians.
     private boolean flora;
     private boolean peix;
 

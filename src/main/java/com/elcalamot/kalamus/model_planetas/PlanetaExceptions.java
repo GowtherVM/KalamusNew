@@ -8,7 +8,7 @@ import java.util.List;
  *
  * @author pau
  */
-public class PlanetaExceptions extends Exception {
+public class PlanetaExceptions extends Exception { //Excepciones propias de los planetas.
     
 
     public static final int GALAXIA_EXIST = 0;

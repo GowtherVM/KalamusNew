@@ -11,7 +11,7 @@ import com.elcalamot.kalamus.exceptions.DatosExceptions;
  *
  * @author A200238614
  */
-public class Humans extends Essers {
+public class Humans extends Essers { //Classe de la raza huma.
     private int edad;
     private boolean genere;
 

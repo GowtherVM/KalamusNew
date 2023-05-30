@@ -15,7 +15,7 @@ import com.elcalamot.kalamus.enums.EnumsExceptions;
  *
  * @author A200238614
  */
-public class Essers {
+public class Essers { //Clase padre de los seres.
     
     private String nom;
     private Esser esser;

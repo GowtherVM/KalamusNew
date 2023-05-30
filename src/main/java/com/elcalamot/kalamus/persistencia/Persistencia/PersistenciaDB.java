@@ -34,7 +34,7 @@ public class PersistenciaDB {
 
     private Connection conexio;
 
-    public void selectAllPlanetas() throws SQLException {
+    public void selectAllPlanetas() throws SQLException { //Extrae y carga todos los planetas en la memoria del programa de la base de datos.
         Sistemas db = Sistemas.getInstance();
         try {
             String query = "select * from planeta;";
@@ -65,7 +65,7 @@ public class PersistenciaDB {
         }
     }
 
-    public void selectAllEssers() throws SQLException, DatosExceptions {
+    public void selectAllEssers() throws SQLException, DatosExceptions { //Extrae y carga todos los seres de la base de datos y los carga en memoria.
         Sistemas db = Sistemas.getInstance();
         try {
             String query = "select * from esser;";
@@ -170,7 +170,7 @@ public class PersistenciaDB {
         }
     }
 
-    public void insertPlaneta(Planeta planeta, String galaxia) throws SQLException {
+    public void insertPlaneta(Planeta planeta, String galaxia) throws SQLException { //Inserta un planeta en la tabla planeta.
         // Pendiente verificar primero que existe
        
         String insert = "insert into planeta (nom_planeta, galaxia, poblacio_max, clima, flora_vermella, essers_aquatics) "
@@ -186,7 +186,7 @@ public class PersistenciaDB {
         ps.close();
     }
 
-    public void insertEssers(Essers esser, String planeta) throws SQLException {
+    public void insertEssers(Essers esser, String planeta) throws SQLException { //Inserta un esser en una tabla dependiendo de que tipo de ser es y lo relaciona con la tabla esser.
         // Pendiente verificar primero que existe
         String insert = "insert into esser(nom, esser, planeta) " + "values (?, ?, ?);";
         PreparedStatement ps = conexio.prepareStatement(insert);
@@ -252,7 +252,7 @@ public class PersistenciaDB {
     }
 
 
-    public void conectar() throws SQLException, ClassNotFoundException {
+    public void conectar() throws SQLException, ClassNotFoundException { //Conecta a la base de datos.
         // Class.forName("com.mysql.cj.jdbc.Driver");
         String url = "jdbc:postgresql://localhost:5432/sistemasdb";
         String user = "postgres";
@@ -260,7 +260,7 @@ public class PersistenciaDB {
         conexio = DriverManager.getConnection(url, user, pass);
     }
 
-    public void desconectar() throws SQLException {
+    public void desconectar() throws SQLException { //Desconecta de la base de datos.
         if (conexio != null) {
             conexio.close();
         }

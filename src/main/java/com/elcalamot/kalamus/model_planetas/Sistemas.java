@@ -24,12 +24,12 @@ import java.util.Set;
 public class Sistemas {
 
     private static Sistemas sistemas = null;
-    private HashMap<String, ArrayList<Planeta>> galaxiaplanetas = new HashMap();
+    private HashMap<String, ArrayList<Planeta>> galaxiaplanetas = new HashMap(); //La estructura de sistemas se gestiona con un nombre de galaxia y una arraylist de planetas.
 
     private Sistemas() {
     }
 
-    public static Sistemas getInstance() {
+    public static Sistemas getInstance() { //Genera la intancia unica o la devulve si ya existe.
         if (sistemas == null) {
             sistemas = new Sistemas();
         }
@@ -37,14 +37,14 @@ public class Sistemas {
         return sistemas;
     }
 
-    public void addGalaxia(String newgalaxia) {
+    public void addGalaxia(String newgalaxia) { //Añade una galaxia al hashmap.
 
         ArrayList<Planeta> planetas = new ArrayList();
         galaxiaplanetas.put(newgalaxia, planetas);
 
     }
 
-    public void addPlaneta(String galaxiaexist, Planeta newplaneta) {
+    public void addPlaneta(String galaxiaexist, Planeta newplaneta) { //Añade un planeta a la arraylist de una galaxia.
 
         ArrayList<Planeta> planetas = galaxiaplanetas.get(galaxiaexist);
         if (planetas != null) {
@@ -53,7 +53,7 @@ public class Sistemas {
 
     }
 
-    public String comprobarGalaxia(String galaxia){
+    public String comprobarGalaxia(String galaxia){ //Comprueba si una galaxia existe.
         boolean keyexist = galaxiaplanetas.containsKey(galaxia.toUpperCase());
 
         if (keyexist == false) {
@@ -63,7 +63,7 @@ public class Sistemas {
         return galaxia;
     }
     
-    public void comprobarEsserP(String nomesser, String nomplaneta)throws NullPointerException, EssersExceptions{
+    public void comprobarEsserP(String nomesser, String nomplaneta)throws NullPointerException, EssersExceptions{ //Compueba si un esser existe en un planeta.
         Set<String> keys = galaxiaplanetas.keySet();
         for (String key : keys) {
             ArrayList<Planeta> planetas = galaxiaplanetas.get(key);
@@ -87,7 +87,7 @@ public class Sistemas {
 
     }
 
-    public String devolverGalaxiaP(String nomplaneta) {
+    public String devolverGalaxiaP(String nomplaneta) { //Devulve el nombre de la galaxia a raiz del planeta.
         String galaxia = "";
         Set<String> keys = galaxiaplanetas.keySet();
         for (String key : keys) {
@@ -101,7 +101,7 @@ public class Sistemas {
         return galaxia;
     }
 
-    public Planeta comprobarPlaneta(String nomplaneta){
+    public Planeta comprobarPlaneta(String nomplaneta){ //Comprueba si un planeta existe.
         Set<String> keys = galaxiaplanetas.keySet();
         for (String key : keys) {
             ArrayList<Planeta> planetas = galaxiaplanetas.get(key);
@@ -117,7 +117,7 @@ public class Sistemas {
         return null;
     }
 
-    public void listPlanetas() {
+    public void listPlanetas() { //Metodo que envia todos los planetas para extraer sus datos.
         Set<String> keys = galaxiaplanetas.keySet();
         for (String key : keys) {
             ArrayList<Planeta> planetas = galaxiaplanetas.get(key);
@@ -128,7 +128,7 @@ public class Sistemas {
         
     }
 
-    public boolean existeGalaxia(String galaxia) {
+    public boolean existeGalaxia(String galaxia) { //Comprueba si la galaxia existe.
         return galaxiaplanetas.containsKey(galaxia);
     }
 
@@ -137,7 +137,7 @@ public class Sistemas {
         return galaxiaplanetas.containsValue(planeta);
     }
 
-    public void listEssers() {
+    public void listEssers() { //Devulve todos los seres de todos los planetas.
 
         Set<String> keys = galaxiaplanetas.keySet();
         for (String key : keys) {
@@ -150,7 +150,7 @@ public class Sistemas {
         }
     }
     
-    public ArrayList <String> nombresPlanetas(){
+    public ArrayList <String> nombresPlanetas(){ //Devuelve los nombres de los planetas para una lista del modo visual.
         ArrayList <String> nombres = new ArrayList();
         String nombre;
         
@@ -166,7 +166,7 @@ public class Sistemas {
         return nombres;
     }
     
-    public ArrayList <String> datosPlanetas(){
+    public ArrayList <String> datosPlanetas(){ //Devuelve los datos de los planetas para el list visual.
         ArrayList <String> datos = new ArrayList();
         String dato;
         
@@ -183,7 +183,7 @@ public class Sistemas {
         return datos;
     }
     
-    public ArrayList <String> datosBeing(){
+    public ArrayList <String> datosBeing(){ //Devuelve los datos de los essers para el list visual.
         ArrayList <String> datosbeing = new ArrayList();
         
         Set<String> keys = galaxiaplanetas.keySet();
@@ -214,7 +214,7 @@ public class Sistemas {
 
     }
     
-    public ArrayList <String> nombresEssers(){
+    public ArrayList <String> nombresEssers(){ //Devuelve los nombres de los essers.
         ArrayList <String> datosbeing = new ArrayList();
         
         Set<String> keys = galaxiaplanetas.keySet();

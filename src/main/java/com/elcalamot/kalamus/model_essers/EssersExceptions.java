@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author espin
  */
-public class EssersExceptions extends Exception{
+public class EssersExceptions extends Exception{ //Excepciones propias de las reglas de los essers.
     public static final int REGLA_AV = 0;
     public static final int REGLA_KLINGON = 1;
     public static final int REGLA_FERENGI = 2;

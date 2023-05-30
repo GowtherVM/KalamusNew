@@ -30,27 +30,23 @@ public class Main {
     public static void main(String[] args) throws IOException, FileNotFoundException, DatosExceptions, SQLException, ClassNotFoundException {
         
         
+        //Genero intancias que en principio se tienen que pasar. De clase en clase que se necesite.
         
-        
-        Sistemas sistemas = Sistemas.getInstance();
+        Sistemas sistemas = Sistemas.getInstance(); // Esta es para absolutamente solo tener una instancia del sistema planetario
         PersistenciaFicheros pers = new PersistenciaFicheros();
         PersistenciaDB persdb = new PersistenciaDB();
         ControllerARGS controller = new ControllerARGS(sistemas, pers, persdb);
         
 
-        pers.comprobarRuta("/planets", ".csv");
-        pers.comprobarRuta("/beings", ".csv");
-
-        // FuncionesModelo_Planetas.testsPlanetas();
-        // FuncionesModelo_Essers.testEssers();
-        generarBDs(crearProperties(),persdb,pers);
         
-        if(args.length == 0){
+        generarBDs(crearProperties(),persdb,pers); 
+        
+        if(args.length == 0){ // Si no hay argumeto se inicia la pantalla grafica
             Principal vista = new Principal();
             vista.setVisible(true);
             
             
-        }else{
+        }else{ //Si detecta argumento ejecuta el controllador de argumentos.
            controller.iniciarKalamusArgs(args);
         }
         
@@ -58,7 +54,7 @@ public class Main {
 
     }
     
-    public static Properties crearProperties() throws FileNotFoundException, IOException {
+    public static Properties crearProperties() throws FileNotFoundException, IOException { //Genera el properties para la base de datos postgres.
         Properties p = new Properties();
         File ficheroProperties = new File(System.getProperty("user.home")+"/.kalamus/kalamus.prop");
         if(!ficheroProperties.exists()){
@@ -72,7 +68,7 @@ public class Main {
         return p;
     }
     
-    public static void generarBDs(Properties eleccion, PersistenciaDB persdb, PersistenciaFicheros persistencia) throws FileNotFoundException, IOException{
+    public static void generarBDs(Properties eleccion, PersistenciaDB persdb, PersistenciaFicheros persistencia) throws FileNotFoundException, IOException{ //Genera las bases de datos dependiendo del properties y las carga en memoria.
         eleccion.load(new FileInputStream(new File(System.getProperty("user.home")+"/.kalamus/kalamus.prop")));
         eleccion.getProperty(("eleccio").toLowerCase());
         
@@ -86,6 +82,8 @@ public class Main {
                 persdb.selectAllEssers();
                 
             }else if(eleccion.getProperty("eleccio").equalsIgnoreCase("fichero")){
+                persistencia.comprobarRuta("/planets", ".csv"); 
+                persistencia.comprobarRuta("/beings", ".csv");
                 persistencia.generarDBP();
                 persistencia.generarDBE();
             }else{

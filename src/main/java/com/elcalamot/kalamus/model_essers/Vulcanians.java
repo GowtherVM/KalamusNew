@@ -10,7 +10,7 @@ import com.elcalamot.kalamus.enums.EnumsExceptions;
  *
  * @author A200238614
  */
-public class Vulcanians extends Essers {
+public class Vulcanians extends Essers { //Clase de raza vulcania.
     private int meditacio;
 
     public Vulcanians(String nom,String esser, int meditacio) throws EnumsExceptions {

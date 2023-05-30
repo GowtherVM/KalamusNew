@@ -10,7 +10,7 @@ import com.elcalamot.kalamus.enums.EnumsExceptions;
  *
  * @author A200238614
  */
-public class Ferengi extends Essers {
+public class Ferengi extends Essers { //Clase de la raza ferengi.
     private double latinum;
 
     public Ferengi(String nom,String esser,double latinum ) throws EnumsExceptions {

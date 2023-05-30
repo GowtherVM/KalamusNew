@@ -17,7 +17,6 @@ import com.elcalamot.kalamus.model_essers.Nibirians;
 import com.elcalamot.kalamus.model_essers.Vulcanians;
 import com.elcalamot.kalamus.model_planetas.FuncionesModelo_Planetas;
 import com.elcalamot.kalamus.model_planetas.Planeta;
-
 import com.elcalamot.kalamus.model_planetas.Sistemas;
 import com.elcalamot.kalamus.persistencia.Persistencia.PersistenciaDB;
 import com.elcalamot.kalamus.persistencia.Persistencia.PersistenciaFicheros;
@@ -30,7 +29,7 @@ import java.sql.SQLException;
  *
  * @author Admin
  */
-public class ControllerARGS {
+public class ControllerARGS { //Clase que controla los argumentos.
 
     private Sistemas sistemas;
     private PersistenciaFicheros persistencia;
@@ -46,22 +45,22 @@ public class ControllerARGS {
     
     
 
-    public void iniciarKalamusArgs(String[] args) throws IOException, DatosExceptions, SQLException, ClassNotFoundException {
+    public void iniciarKalamusArgs(String[] args) throws IOException, DatosExceptions, SQLException, ClassNotFoundException { //Meotodo que inicia la ejecucion de lo que sedebe hacer.
         
 
-        switch (args[0]) {
+        switch (args[0]) { //Con los switch controlamos los dos primeros para posteriormente ejecutar su respectiva accion, ej:planet add ... ejecuta añadir un planeta.
             case "planet":
 
                 switch (args[1]) {
 
                     case "add":
 
-                        FuncionesModelo_Planetas.crearPlaneta(args,"args");
+                        FuncionesModelo_Planetas.crearPlaneta(args,"args"); //Llama a la funcion para crear planetas.
 
                         break;
                     case "list":
-                        DemanarDades.comprobarArgs(args, 2);
-                        sistemas.listPlanetas();
+                        DemanarDades.comprobarArgs(args, 2); 
+                        sistemas.listPlanetas(); //Llama a la funcion para listar planetas.
                         break;
                     default:
                         System.out.println("Comando no existe. Unicamente se acepta (add/list).");
@@ -72,12 +71,12 @@ public class ControllerARGS {
                 switch (args[1]) {
                     case "add":
                         
-                        FuncionesModelo_Essers.crearEsser(args, "args");
+                        FuncionesModelo_Essers.crearEsser(args, "args"); //Llama a la funcion para crear essers.
                         
                         break;
                     case "list":
                         DemanarDades.comprobarArgs(args, 2);
-                        sistemas.listEssers();
+                        sistemas.listEssers(); // Llama a la funcion para listar essers.
                         break;
                     default:
                         System.out.println("Comando no existe. Unicamente se acepta (add/list).");
@@ -92,7 +91,7 @@ public class ControllerARGS {
 
     }
 
-    public static void generarCadenasEssers(Planeta planeta_essers) {
+    public static void generarCadenasEssers(Planeta planeta_essers) { // Genera las cadenas para leer en la salida de la funcion de being list.
 
         ArrayList<String> cadenas = new ArrayList();
         ArrayList<Humans> poblacio_humans = new ArrayList();
@@ -197,7 +196,7 @@ public class ControllerARGS {
     }
     
     
-    public static ArrayList<String> generarCadenasPlanetas(Planeta plan){
+    public static ArrayList<String> generarCadenasPlanetas(Planeta plan){ //Genra la cadena para la opcion planet list
         ArrayList<String> cadenas = new ArrayList();
         
         cadenas.add("Planeta: " + plan.getNomplan());

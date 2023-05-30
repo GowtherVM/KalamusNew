@@ -30,7 +30,7 @@ import java.util.Properties;
  */
 public class FuncionesModelo_Essers {
 
-    public static String crearEsser(String[] args, String modo) throws IOException {
+    public static String crearEsser(String[] args, String modo) throws IOException { //Funcion que genera los essers dependiendo de la raza.
         String out = "";
         PersistenciaDB persistenciadb = new PersistenciaDB();
         Properties eleccion = new Properties();
@@ -42,8 +42,8 @@ public class FuncionesModelo_Essers {
             
             Planeta planeta = sis.comprobarPlaneta(args[4].toLowerCase());
             
-            switch (args[3].toLowerCase()) {
-
+            switch (args[3].toLowerCase()) { //Filtrado del tipo de esser para generar su respectiva instancia a añadir en el planeta especifico si existe.
+                //Filtra los datos intrducidos.Y los añade a los ficheros o base de datos dependiendo del properties.
                 case "huma":
                     DemanarDades.comprobarArgs(args, 7);
                     sis.comprobarEsserP(args[2].toLowerCase(), planeta.getNomplan());
@@ -167,7 +167,7 @@ public class FuncionesModelo_Essers {
 
             }
 
-        } catch (NullPointerException | DatosExceptions | EssersExceptions | EnumsExceptions | PlanetaExceptions | SQLException | ClassNotFoundException exception) {
+        } catch (NullPointerException | DatosExceptions | EssersExceptions | EnumsExceptions | PlanetaExceptions | SQLException | ClassNotFoundException exception) { //Recoje excepciones.
             if(modo.equalsIgnoreCase("args")){
                 System.out.println(exception.getMessage());
             }else{
@@ -178,7 +178,7 @@ public class FuncionesModelo_Essers {
         return out;
     }
 
-    public static String getGenere(boolean opcio) {
+    public static String getGenere(boolean opcio) { //Modifica el boolean a string.
         if (opcio == true) {
             return "masculi";
         } else if (opcio == false) {
@@ -189,7 +189,7 @@ public class FuncionesModelo_Essers {
 
     }
 
-    public static boolean getPeixFlora(String opcio) throws DatosExceptions {
+    public static boolean getPeixFlora(String opcio) throws DatosExceptions { //Modifica el string a boolean.
         if (opcio.equalsIgnoreCase("yes")) {
             return true;
         } else if (opcio.equalsIgnoreCase("no")) {
@@ -198,7 +198,7 @@ public class FuncionesModelo_Essers {
         throw new DatosExceptions(4);
     }
 
-    public static String getPeixFlora(boolean opcio) {
+    public static String getPeixFlora(boolean opcio) { //Modifica el boolean a yes/no.
         if (opcio == true) {
             return "Yes";
         } else if (opcio == false) {
@@ -209,7 +209,7 @@ public class FuncionesModelo_Essers {
 
     }
 
-    public static boolean elegirGenere(String opcio, String mensaje) throws DatosExceptions {
+    public static boolean elegirGenere(String opcio, String mensaje) throws DatosExceptions { //String a true o false dependiendo de masculi femeni.
         if (opcio.equalsIgnoreCase("masculi")) {
             return true;
         } else if (opcio.equalsIgnoreCase("femeni")) {
@@ -220,7 +220,7 @@ public class FuncionesModelo_Essers {
 
     }
 
-    public static void reglasVA(Essers va, Planeta destino) throws EssersExceptions {
+    public static void reglasVA(Essers va, Planeta destino) throws EssersExceptions { //Compueba las reglas de los vulcanians i andorians.
         ArrayList<Essers> poblacion_planeta = destino.getLista();
         switch (va.getEsser()) {
             case VULCANIANS:
@@ -242,21 +242,21 @@ public class FuncionesModelo_Essers {
 
     }
 
-    public static void reglasKlingon(Planeta destino) throws EssersExceptions {
+    public static void reglasKlingon(Planeta destino) throws EssersExceptions { //Comprueba la regla klingon.
         if (destino.getClima() == CALID) {
             throw new EssersExceptions(1);
         }
 
     }
 
-    public static void reglasFerengi(Planeta destino) throws EssersExceptions {
+    public static void reglasFerengi(Planeta destino) throws EssersExceptions { //Comprueba la regla de ferengi.
         if (destino.getClima() == FRED) {
             throw new EssersExceptions(2);
         }
 
     }
 
-    public static void reglasNibirians(Nibirians nib, Planeta destino) throws EssersExceptions {
+    public static void reglasNibirians(Nibirians nib, Planeta destino) throws EssersExceptions { //Comprueba la regla de los niberians.
         if (nib.isFlora().equalsIgnoreCase("yes")) {
             if (destino.getFlora_vermella().equalsIgnoreCase("No")) {
                 throw new EssersExceptions(4);
@@ -267,27 +267,6 @@ public class FuncionesModelo_Essers {
         if (nib.isPeix().equalsIgnoreCase("Si") && destino.getEssers_aquatics().equalsIgnoreCase("No")) {
             throw new EssersExceptions(5);
         }
-
-    }
-
-    public static void testEssers() throws IOException, PlanetaExceptions, DatosExceptions, EnumsExceptions {
-        Sistemas sis = Sistemas.getInstance();
-        Planeta tierra = sis.comprobarPlaneta("tierra");
-        Planeta marte = sis.comprobarPlaneta("marte");
-
-        Humans nuevo = new Humans("Sarah", "humans", 21, "femeni");
-        Humans nuevo1 = new Humans("Pau", "humans", 23, "masculi");
-        Klingon kling = new Klingon("Eric", "klingon", 5);
-        Nibirians nib = new Nibirians("Nibpez", "nibirians", true, false);
-        Andorians andor = new Andorians("Andor1", "andorians", "defensor");
-        Vulcanians vulc = new Vulcanians("Vulc1", "vulcanians", 5);
-        tierra.addEsser(vulc);
-
-        tierra.addEsser(andor);
-        marte.addEsser(nib);
-        tierra.addEsser(nuevo);
-        tierra.addEsser(nuevo1);
-        marte.addEsser(kling);
 
     }
 }

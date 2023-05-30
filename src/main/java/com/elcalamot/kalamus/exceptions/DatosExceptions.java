@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author espin
  */
-public class DatosExceptions extends Exception {
+public class DatosExceptions extends Exception { //Excepciones relacionadas con la generacion de datos especifica.
     public static final int EDAD_HUMA = 0;
     public static final int MEDITACIO_VULC = 1;
     public static final int FUERZA_KLING = 2;

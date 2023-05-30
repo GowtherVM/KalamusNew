@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author A200238614
  */
-public class EnumsExceptions extends Exception {
+public class EnumsExceptions extends Exception { //Excepciones que estan relacionados con los enums.
     public static final int ELEGIR_CLIMA = 0;
     public static final int ELEGIR_ESSER = 1;
     public static final int ELEGIR_RANGO = 2;

@@ -12,7 +12,7 @@ import com.elcalamot.kalamus.enums.EnumsExceptions;
  *
  * @author A200238614
  */
-public class Andorians extends Essers {
+public class Andorians extends Essers { //Clase del ser andoria.
     private Rango rango;
 
     public Andorians(String nom,String esser, String rango ) throws EnumsExceptions {

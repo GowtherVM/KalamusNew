@@ -32,7 +32,7 @@ import static com.elcalamot.kalamus.model_essers.FuncionesModelo_Essers.getPeixF
  */
 public class PersistenciaFicheros {
 
-    public void comprobarRuta(String nombre, String extension) throws IOException {
+    public void comprobarRuta(String nombre, String extension) throws IOException { //Compruba si la ruta existe. Si no existe la genera.
 
         File directorio = new File(System.getProperty("user.home") + "/.kalamus");
         if (!directorio.exists()) {
@@ -57,7 +57,7 @@ public class PersistenciaFicheros {
 
     }
 
-    public static void anadirEsser(Essers esser, Planeta planeta) throws IOException {
+    public static void anadirEsser(Essers esser, Planeta planeta) throws IOException { //Añade un esser al fichero being.csv
         Sistemas sis = Sistemas.getInstance();
         String galaxia = sis.devolverGalaxiaP(planeta.getNomplan());
         File file = new File(System.getProperty("user.home") + "/.kalamus/beings.csv");
@@ -89,7 +89,7 @@ public class PersistenciaFicheros {
         write.close();
     }
 
-    public static void anadirPlaneta(Planeta planeta, String galaxia) throws IOException {
+    public static void anadirPlaneta(Planeta planeta, String galaxia) throws IOException { //Añade un planeta al fichero planetas.csv
         String contenido = planeta.getNomplan() + "," + galaxia + "," + String.valueOf(planeta.getPoblacio_max()) + "," + planeta.getClima() + "," + planeta.getFlora_vermella() + "," + planeta.getEssers_aquatics();
         File file = new File(System.getProperty("user.home") + "/.kalamus/planets.csv");
         FileWriter archivo = new FileWriter(file, true);
@@ -114,7 +114,7 @@ public class PersistenciaFicheros {
     }
 
 
-    public static void generarDBP() throws FileNotFoundException, IOException {
+    public static void generarDBP() throws FileNotFoundException, IOException { //Carga los planetas del fichero en la memoria.
         try {
             System.out.println(".");
             Sistemas db = Sistemas.getInstance();
@@ -140,7 +140,7 @@ public class PersistenciaFicheros {
 
     }
 
-    public static void generarDBE() throws FileNotFoundException, IOException, DatosExceptions, EnumsExceptions{
+    public static void generarDBE() throws FileNotFoundException, IOException, DatosExceptions, EnumsExceptions{ //Carga los essers del fichero en la memoria.
 
         System.out.println(".");
         Sistemas db = Sistemas.getInstance();

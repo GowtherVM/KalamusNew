@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author Admin
  */
-public class Planeta {
+public class Planeta { //Clase de los planetas. Con arraylist de sus seres.
 
     private String nomplan;
     private int poblacio_max;

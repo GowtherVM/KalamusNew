@@ -13,7 +13,7 @@ import java.io.InputStreamReader;
  *
  * @author usuari
  */
-public class DemanarDades {
+public class DemanarDades { //Funciones generales de validacion de datos o pedir datos.
 
     public static String demanarCadenaNoBuida(String missatge) throws IOException {
         BufferedReader entrada = new BufferedReader(new InputStreamReader(System.in));

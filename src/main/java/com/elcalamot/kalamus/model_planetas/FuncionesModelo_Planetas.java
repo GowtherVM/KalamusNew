@@ -24,8 +24,9 @@ import java.util.Properties;
  */
 public class FuncionesModelo_Planetas {
 
-    public static String crearPlaneta(String[] args, String modo) throws IOException, SQLException, ClassNotFoundException {
-
+    public static String crearPlaneta(String[] args, String modo) throws IOException, SQLException, ClassNotFoundException { //Funcion que verifica los datos de entrada y crea un planeta con lo solicitado.
+        
+        
 
         PersistenciaDB persistenciadb = new PersistenciaDB();
         Properties eleccion = new Properties();
@@ -33,7 +34,7 @@ public class FuncionesModelo_Planetas {
         eleccion.getProperty(("eleccio").toLowerCase());
         String mensaje = "";
         
-        try {
+        try { //Prueba la verificacion de datos y el añadir la galaxia y el planeta en caso de que no este repetido.
             DemanarDades.comprobarArgs(args, 8);
             Sistemas sistemas = Sistemas.getInstance();
             Enums.Clima clima = Enums.elegirClima(args[5]);
@@ -52,7 +53,7 @@ public class FuncionesModelo_Planetas {
                 Planeta nuevoplaneta = new Planeta(args[2].toLowerCase(), Integer.parseInt(args[4]), clima, args[6], args[7]);
                 sistemas.addPlaneta(args[3].toUpperCase(), nuevoplaneta);
 
-                if (eleccion.getProperty("eleccio").equalsIgnoreCase("postgres")) {
+                if (eleccion.getProperty("eleccio").equalsIgnoreCase("postgres")) { //Dependiendo del properties lo añade a la bbdd o al fichero.
                     persistenciadb.conectar();
                     persistenciadb.insertPlaneta(nuevoplaneta, args[3].toUpperCase());
                     persistenciadb.desconectar();
@@ -69,7 +70,7 @@ public class FuncionesModelo_Planetas {
                 
             }
 
-        } catch (EnumsExceptions | DatosExceptions | SQLException exceptions) {
+        } catch (EnumsExceptions | DatosExceptions | SQLException exceptions) { //Si algun dato es inorrecto genera una excepcion que coge el catch y muestra el mensaje dependiendo si es por jframe o output.
             if (modo == "jframe") {
                 mensaje = exceptions.getMessage();
             } else {
@@ -86,7 +87,7 @@ public class FuncionesModelo_Planetas {
         return mensaje;
     }
 
-    public static boolean elegirOpcion(String opcio, String mensaje) throws PlanetaExceptions {
+    public static boolean elegirOpcion(String opcio, String mensaje) throws PlanetaExceptions { //Hace un cambio dependiendo de la opcion para poner true o false.
         if (opcio.equalsIgnoreCase("si")) {
             return true;
         } else if (opcio.equalsIgnoreCase("no")) {
@@ -99,7 +100,7 @@ public class FuncionesModelo_Planetas {
 
     }
 
-    public static void poblacionPlaneta(String planeta) throws PlanetaExceptions {
+    public static void poblacionPlaneta(String planeta) throws PlanetaExceptions { //Metodo que calcula si añades un habitante mas si sobre pasas el limite o no de habitantes.
         Sistemas sis = Sistemas.getInstance();
         Planeta pla = sis.comprobarPlaneta(planeta);
         ArrayList<Essers> array = pla.getLista();
