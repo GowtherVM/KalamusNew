@@ -72,7 +72,7 @@ public class ControllerARGS {
                 switch (args[1]) {
                     case "add":
                         
-                        FuncionesModelo_Essers.crearEsser(args, persdb);
+                        FuncionesModelo_Essers.crearEsser(args, "args");
                         
                         break;
                     case "list":

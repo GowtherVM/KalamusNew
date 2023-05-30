@@ -32,7 +32,7 @@ public class FuncionesModelo_Planetas {
         eleccion.load(new FileInputStream(new File(System.getProperty("user.home") + "/.kalamus/kalamus.prop")));
         eleccion.getProperty(("eleccio").toLowerCase());
         String mensaje = "";
-        persistenciadb.conectar();
+        
         try {
             DemanarDades.comprobarArgs(args, 8);
             Sistemas sistemas = Sistemas.getInstance();
@@ -53,7 +53,9 @@ public class FuncionesModelo_Planetas {
                 sistemas.addPlaneta(args[3].toUpperCase(), nuevoplaneta);
 
                 if (eleccion.getProperty("eleccio").equalsIgnoreCase("postgres")) {
+                    persistenciadb.conectar();
                     persistenciadb.insertPlaneta(nuevoplaneta, args[3].toUpperCase());
+                    persistenciadb.desconectar();
                 } else if (eleccion.getProperty("eleccio").equalsIgnoreCase("fichero")) {
                     PersistenciaFicheros.anadirPlaneta(nuevoplaneta, args[3].toUpperCase());
                 }
@@ -80,7 +82,7 @@ public class FuncionesModelo_Planetas {
                 System.out.println("Se espraba un valor numerico en habitantes.\n No se ha generado el planetas.");
             }
         }
-        persistenciadb.desconectar();
+        
         return mensaje;
     }
 

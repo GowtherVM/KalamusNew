@@ -77,6 +77,7 @@ public class AddPlanet extends javax.swing.JFrame {
         añadirplaneta = new javax.swing.JButton();
 
         this.setLocationRelativeTo(null);
+        mensaje.setTitle("Mensaje");
         mensaje.setMinimumSize(new java.awt.Dimension(400, 300));
         mensaje.getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
@@ -273,9 +274,9 @@ public class AddPlanet extends javax.swing.JFrame {
             } else if (flora == false) {
                 dato1 = "no";
             }
-            if (flora == true) {
+            if (pez == true) {
                 dato2 = "yes";
-            } else if (flora == false) {
+            } else if (pez == false) {
                 dato2 = "no";
             }
             try {
@@ -287,7 +288,7 @@ public class AddPlanet extends javax.swing.JFrame {
 
                 this.mensajepanel.append(out);
                 this.mensaje.setVisible(true);
-
+                
             } catch (IOException | ClassNotFoundException | SQLException e) {
                 System.out.println(e.getMessage());
             }

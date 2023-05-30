@@ -4,11 +4,14 @@
  */
 package com.elcalamot.kalamus.vistas;
 
-import com.elcalamot.kalamus.model_planetas.FuncionesModelo_Planetas;
+import com.elcalamot.kalamus.model_essers.FuncionesModelo_Essers;
+
 import com.elcalamot.kalamus.model_planetas.Sistemas;
 import static java.awt.event.MouseEvent.BUTTON1;
+
 import java.io.IOException;
-import java.sql.SQLException;
+
+
 import java.util.ArrayList;
 
 /**
@@ -23,22 +26,24 @@ public class AddBeing extends javax.swing.JFrame {
     public AddBeing() {
         initComponents();
         Sistemas sis = Sistemas.getInstance();
-        this.setLocationRelativeTo(null);
         
-            this.latinum1.setVisible(false);
-            this.latinum.setVisible(false);
-            this.genere.setVisible(true);
-            this.genere1.setVisible(true);
-            this.edad.setVisible(true);
-            this.edad1.setVisible(true);
-            this.flora.setVisible(false);
-            this.pez.setVisible(false);
-            this.fuerza.setVisible(false);
-            this.fuerza1.setVisible(false);
-            this.meditacion.setVisible(false);
-            this.meditacion1.setVisible(false);
-            this.rango.setVisible(false);
-            this.rango1.setVisible(false);
+        this.setLocationRelativeTo(null);
+        this.añadirbeing.setVisible(false);
+        this.añadirbeing.setEnabled(false);
+        this.latinum1.setVisible(false);
+        this.latinum.setVisible(false);
+        this.genere.setVisible(true);
+        this.genere1.setVisible(true);
+        this.edad.setVisible(true);
+        this.edad1.setVisible(true);
+        this.flora.setVisible(false);
+        this.pez.setVisible(false);
+        this.fuerza.setVisible(false);
+        this.fuerza1.setVisible(false);
+        this.meditacion.setVisible(false);
+        this.meditacion1.setVisible(false);
+        this.rango.setVisible(false);
+        this.rango1.setVisible(false);
 
         ArrayList<String> listb = sis.nombresEssers();
         planetexist.append("No disponibles: \n");
@@ -50,11 +55,12 @@ public class AddBeing extends javax.swing.JFrame {
     }
 
     public void habilitarBoton() {
-        if (!this.nombre1.getText().isEmpty() && !this.galaxia1.getText().isEmpty()) {
-
+        if (!this.nombre1.getText().isEmpty() && !this.planeta1.getText().isEmpty()) {
+            this.añadirbeing.setVisible(true);
             this.añadirbeing.setEnabled(true);
 
         } else {
+            this.añadirbeing.setVisible(false);
             this.añadirbeing.setEnabled(false);
         }
 
@@ -77,9 +83,9 @@ public class AddBeing extends javax.swing.JFrame {
         planetexist = new javax.swing.JTextArea();
         nombre = new javax.swing.JLabel();
         nombre1 = new javax.swing.JTextField();
-        galaxia1 = new javax.swing.JTextField();
+        planeta1 = new javax.swing.JTextField();
         nombre2 = new javax.swing.JLabel();
-        planeta2 = new javax.swing.JLabel();
+        planeta = new javax.swing.JLabel();
         esser1 = new javax.swing.JComboBox<>();
         esser = new javax.swing.JLabel();
         linea = new javax.swing.JLabel();
@@ -146,9 +152,9 @@ public class AddBeing extends javax.swing.JFrame {
             }
         });
 
-        galaxia1.addKeyListener(new java.awt.event.KeyAdapter() {
+        planeta1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                galaxia1KeyReleased(evt);
+                planeta1KeyReleased(evt);
             }
         });
 
@@ -157,10 +163,10 @@ public class AddBeing extends javax.swing.JFrame {
         nombre2.setForeground(new java.awt.Color(204, 204, 204));
         nombre2.setText("Nombre:");
 
-        planeta2.setBackground(new java.awt.Color(204, 204, 204));
-        planeta2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        planeta2.setForeground(new java.awt.Color(204, 204, 204));
-        planeta2.setText("Planeta:");
+        planeta.setBackground(new java.awt.Color(204, 204, 204));
+        planeta.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        planeta.setForeground(new java.awt.Color(204, 204, 204));
+        planeta.setText("Planeta:");
 
         esser1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "HUMA", "ANDORIA", "FERENGI", "VULCANIA", "KLINGON", "NIBIRIA" }));
         esser1.addActionListener(new java.awt.event.ActionListener() {
@@ -206,7 +212,6 @@ public class AddBeing extends javax.swing.JFrame {
         edad1.setText("Edad:");
 
         edad.setModel(new javax.swing.SpinnerNumberModel(1, 1, 130, 1));
-        edad.setEnabled(false);
 
         meditacion1.setBackground(new java.awt.Color(204, 204, 204));
         meditacion1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -337,12 +342,12 @@ public class AddBeing extends javax.swing.JFrame {
                             .addComponent(linea)
                             .addGroup(baseLayout.createSequentialGroup()
                                 .addGroup(baseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(planeta2)
+                                    .addComponent(planeta)
                                     .addComponent(esser))
                                 .addGap(18, 18, 18)
                                 .addGroup(baseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(esser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(galaxia1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(planeta1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 10, Short.MAX_VALUE))
                     .addComponent(datosgenerales, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -363,8 +368,8 @@ public class AddBeing extends javax.swing.JFrame {
                             .addComponent(nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(baseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(galaxia1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(planeta2))
+                            .addComponent(planeta1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(planeta))
                         .addGap(18, 18, 18)
                         .addGroup(baseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(esser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -397,13 +402,61 @@ public class AddBeing extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void añadirbeingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_añadirbeingMouseClicked
-        if (evt.getButton() == BUTTON1) {
+        String out = "";
+        try {
+            
+            if (evt.getButton() == BUTTON1) {
+                
+                String nom = this.nombre1.getText();
+                String planeta = this.planeta1.getText();
 
-            String nombre = this.nombre1.getText();
-            String planeta = this.planeta2.getText();
+                if (this.esser1.getSelectedItem().toString().equalsIgnoreCase("huma")) {
+                    String genere = this.genere.getSelectedItem().toString();
+                    String edad = this.edad.getValue().toString();
+                    String[] huma = {"", "", nom, "huma", planeta, edad, genere};
+                    out = FuncionesModelo_Essers.crearEsser(huma, "vista");
+                } else if (this.esser1.getSelectedItem().toString().equalsIgnoreCase("andoria")) {
+                    String rango = this.rango.getSelectedItem().toString();
+                    String[] andor = {"", "", nom, "andoria", planeta, rango};
+                    out = FuncionesModelo_Essers.crearEsser(andor, "vista");
+                } else if (this.esser1.getSelectedItem().toString().equalsIgnoreCase("klingon")) {
+                    String fuerza = this.fuerza.getValue().toString();
+                    String[] klingon = {"", "", nom, "klingon", planeta, fuerza};
+                    out = FuncionesModelo_Essers.crearEsser(klingon, "vista");
+                } else if (this.esser1.getSelectedItem().toString().equalsIgnoreCase("ferengi")) {
 
+                    String latinum = this.latinum.getValue().toString();
+                    String[] fer = {"", "", nom, "ferengi", planeta, latinum};
+                    out = FuncionesModelo_Essers.crearEsser(fer, "vista");
+                } else if (this.esser1.getSelectedItem().toString().equalsIgnoreCase("nibiria")) {
+                    boolean flora = this.flora.isSelected();
+                    boolean pez = this.pez.isSelected();
+                    String dato1 = "no";
+                    String dato2 = "no";
+                    if (flora == true) {
+                        dato1 = "yes";
+                    } else if (flora == false) {
+                        dato1 = "no";
+                    }
+                    if (pez == true) {
+                        dato2 = "yes";
+                    } else if (pez == false) {
+                        dato2 = "no";
+                    }
+
+                    String[] nib = {"", "", nom, "nibiria", planeta, dato1, dato2};
+                    out = FuncionesModelo_Essers.crearEsser(nib, "vista");
+                } else if (this.esser1.getSelectedItem().toString().equalsIgnoreCase("vulcania")) {
+                    String meditacio = this.meditacion.getValue().toString();
+                    String[] val = {"", "", nom, "vulcania", planeta, meditacio};
+                    out = FuncionesModelo_Essers.crearEsser(val, "vista");
+                }
+            }
+        } catch (IOException e) {
+            out = e.getMessage().toString();
         }
-
+        this.mensajepanel.append(out);
+        this.mensaje.setVisible(true);
 
     }//GEN-LAST:event_añadirbeingMouseClicked
 
@@ -413,9 +466,9 @@ public class AddBeing extends javax.swing.JFrame {
 
     }//GEN-LAST:event_nombre1KeyReleased
 
-    private void galaxia1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_galaxia1KeyReleased
+    private void planeta1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_planeta1KeyReleased
         habilitarBoton();
-    }//GEN-LAST:event_galaxia1KeyReleased
+    }//GEN-LAST:event_planeta1KeyReleased
 
     private void esser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_esser1ActionPerformed
         if (this.esser1.getSelectedItem().toString().equalsIgnoreCase("huma")) {
@@ -433,9 +486,8 @@ public class AddBeing extends javax.swing.JFrame {
             this.meditacion1.setVisible(false);
             this.rango.setVisible(false);
             this.rango1.setVisible(false);
-            
 
-        } else if (this.esser1.getSelectedItem().toString().equalsIgnoreCase("andoria")) {     
+        } else if (this.esser1.getSelectedItem().toString().equalsIgnoreCase("andoria")) {
             this.latinum1.setVisible(false);
             this.latinum.setVisible(false);
             this.genere.setVisible(false);
@@ -574,7 +626,6 @@ public class AddBeing extends javax.swing.JFrame {
     private javax.swing.JRadioButton flora;
     private javax.swing.JSpinner fuerza;
     private javax.swing.JLabel fuerza1;
-    private javax.swing.JTextField galaxia1;
     private javax.swing.JComboBox<String> genere;
     private javax.swing.JLabel genere1;
     private javax.swing.JPanel jPanel1;
@@ -591,7 +642,8 @@ public class AddBeing extends javax.swing.JFrame {
     private javax.swing.JTextField nombre1;
     private javax.swing.JLabel nombre2;
     private javax.swing.JRadioButton pez;
-    private javax.swing.JLabel planeta2;
+    private javax.swing.JLabel planeta;
+    private javax.swing.JTextField planeta1;
     private javax.swing.JTextArea planetexist;
     private javax.swing.JComboBox<String> rango;
     private javax.swing.JLabel rango1;

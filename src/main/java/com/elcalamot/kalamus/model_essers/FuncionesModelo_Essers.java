@@ -30,16 +30,18 @@ import java.util.Properties;
  */
 public class FuncionesModelo_Essers {
 
-    public static void crearEsser(String[] args, PersistenciaDB persistenciadb) throws IOException {
-
+    public static String crearEsser(String[] args, String modo) throws IOException {
+        String out = "";
+        PersistenciaDB persistenciadb = new PersistenciaDB();
         Properties eleccion = new Properties();
         eleccion.load(new FileInputStream(new File(System.getProperty("user.home") + "/.kalamus/kalamus.prop")));
         eleccion.getProperty(("eleccio").toLowerCase());
-
+        
         try {
             Sistemas sis = Sistemas.getInstance();
+            
             Planeta planeta = sis.comprobarPlaneta(args[4].toLowerCase());
-
+            
             switch (args[3].toLowerCase()) {
 
                 case "huma":
@@ -48,16 +50,19 @@ public class FuncionesModelo_Essers {
                     DemanarDades.demanarEnter(Integer.parseInt(args[5]), 0, 130, "huma");
                     Humans huma = new Humans(args[2], "huma", Integer.parseInt(args[5]), args[6]);
                     FuncionesModelo_Planetas.poblacionPlaneta(planeta.getNomplan());
+                    
                     planeta.addEsser(huma);
 
                     if (eleccion.getProperty("eleccio").equalsIgnoreCase("postgres")) {
+                        persistenciadb.conectar();
                         persistenciadb.insertEssers(huma, args[4].toLowerCase());
+                        persistenciadb.desconectar();
                     } else if (eleccion.getProperty("eleccio").equalsIgnoreCase("fichero")) {
                         PersistenciaFicheros.anadirEsser(huma, planeta);
                     }
 
                     System.out.println("Añadido correctamente.");
-
+                    out = "Añadido correctamente.";
                     break;
                 case "andoria":
                     DemanarDades.comprobarArgs(args, 6);
@@ -68,13 +73,16 @@ public class FuncionesModelo_Essers {
                     planeta.addEsser(andor);
 
                     if (eleccion.getProperty("eleccio").equalsIgnoreCase("postgres")) {
+                        persistenciadb.conectar();
                         persistenciadb.insertEssers(andor, args[4].toLowerCase());
+                        persistenciadb.desconectar();
                     } else if (eleccion.getProperty("eleccio").equalsIgnoreCase("fichero")) {
                         PersistenciaFicheros.anadirEsser(andor, planeta);
                     }
 
                     System.out.println("Añadido correctamente.");
-
+                    out = "Añadido correctamente.";
+                    
                     break;
                 case "ferengi":
                     DemanarDades.comprobarArgs(args, 6);
@@ -86,13 +94,15 @@ public class FuncionesModelo_Essers {
                     planeta.addEsser(fer);
 
                     if (eleccion.getProperty("eleccio").equalsIgnoreCase("postgres")) {
+                        persistenciadb.conectar();
                         persistenciadb.insertEssers(fer, args[4].toLowerCase());
+                        persistenciadb.desconectar();
                     } else if (eleccion.getProperty("eleccio").equalsIgnoreCase("fichero")) {
                         PersistenciaFicheros.anadirEsser(fer, planeta);
                     }
 
                     System.out.println("Añadido correctamente.");
-
+                    out = "Añadido correctamente.";
                     break;
                 case "vulcania":
                     DemanarDades.comprobarArgs(args, 6);
@@ -104,11 +114,13 @@ public class FuncionesModelo_Essers {
                     planeta.addEsser(vulc);
 
                     if (eleccion.getProperty("eleccio").equalsIgnoreCase("postgres")) {
+                        persistenciadb.conectar();
                         persistenciadb.insertEssers(vulc, args[4].toLowerCase());
+                        persistenciadb.desconectar();
                     } else if (eleccion.getProperty("eleccio").equalsIgnoreCase("fichero")) {
                         PersistenciaFicheros.anadirEsser(vulc, planeta);
                     }
-
+                    out = "Añadido correctamente.";
                     System.out.println("Añadido correctamente.");
 
                     break;
@@ -121,11 +133,13 @@ public class FuncionesModelo_Essers {
                     planeta.addEsser(nib);
 
                     if (eleccion.getProperty("eleccio").equalsIgnoreCase("postgres")) {
+                        persistenciadb.conectar();
                         persistenciadb.insertEssers(nib, args[4].toLowerCase());
+                        persistenciadb.desconectar();
                     } else if (eleccion.getProperty("eleccio").equalsIgnoreCase("fichero")) {
                         PersistenciaFicheros.anadirEsser(nib, planeta);
                     }
-
+                    out = "Añadido correctamente.";
                     System.out.println("Añadido correctamente.");
 
                     break;
@@ -140,20 +154,28 @@ public class FuncionesModelo_Essers {
                     planeta.addEsser(kling);
 
                     if (eleccion.getProperty("eleccio").equalsIgnoreCase("postgres")) {
+                        persistenciadb.conectar();
                         persistenciadb.insertEssers(kling, args[4].toLowerCase());
+                        persistenciadb.desconectar();
                     } else if (eleccion.getProperty("eleccio").equalsIgnoreCase("fichero")) {
                         PersistenciaFicheros.anadirEsser(kling, planeta);
                     }
-
+                    out = "Añadido correctamente.";
                     System.out.println("Añadido correctamente.");
 
                     break;
 
             }
 
-        } catch (NullPointerException | DatosExceptions | EssersExceptions | EnumsExceptions | PlanetaExceptions | SQLException exception) {
-            System.out.println(exception.getMessage());
+        } catch (NullPointerException | DatosExceptions | EssersExceptions | EnumsExceptions | PlanetaExceptions | SQLException | ClassNotFoundException exception) {
+            if(modo.equalsIgnoreCase("args")){
+                System.out.println(exception.getMessage());
+            }else{
+                out = exception.getMessage();
+            }
+            
         }
+        return out;
     }
 
     public static String getGenere(boolean opcio) {

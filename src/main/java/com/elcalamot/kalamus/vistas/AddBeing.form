@@ -109,13 +109,13 @@
                               <Component id="linea" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="planeta2" min="-2" max="-2" attributes="0"/>
+                                      <Component id="planeta" min="-2" max="-2" attributes="0"/>
                                       <Component id="esser" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="esser1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="galaxia1" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Component id="planeta1" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -145,8 +145,8 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="galaxia1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="planeta2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="planeta1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="planeta" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -216,9 +216,9 @@
             <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="nombre1KeyReleased"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="galaxia1">
+        <Component class="javax.swing.JTextField" name="planeta1">
           <Events>
-            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="galaxia1KeyReleased"/>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="planeta1KeyReleased"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="nombre2">
@@ -235,7 +235,7 @@
             <Property name="text" type="java.lang.String" value="Nombre:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="planeta2">
+        <Component class="javax.swing.JLabel" name="planeta">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -461,7 +461,6 @@
                 <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
                   <SpinnerModel initial="1" maximum="130" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
                 </Property>
-                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="meditacion1">
